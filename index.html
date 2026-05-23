@@ -194,12 +194,17 @@
 
     /* ── ТРЕНЕР ── */
     .trainer-wrap { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; margin-top: 48px; background: rgba(4,2,14,0.6); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid var(--border); border-radius: 20px; padding: 40px; }
-    .trainer-photo { width: 180px; height: 220px; border-radius: 16px; border: 1px solid var(--border); background: rgba(0,0,0,0.5); backdrop-filter: blur(12px); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .trainer-initials { font-size: 3rem; font-weight: 900; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .trainer-name { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: opacity 0.2s; }
+    .trainer-photo { width: 180px; height: 240px; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; flex-shrink: 0; }
+    .trainer-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .trainer-name { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 4px; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: opacity 0.2s; }
     .trainer-name:hover { opacity: 0.8; }
-    .trainer-name-arrow { display: inline-flex; align-items: center; color: var(--gold); opacity: 1; flex-shrink: 0; background: rgba(137,101,224,0.18); border-radius: 50%; width: 36px; height: 36px; justify-content: center; transition: background 0.2s; }
-    .trainer-name:hover .trainer-name-arrow { background: rgba(137,101,224,0.35); }
+    .trainer-name-arrow { display: inline-flex; align-items: center; justify-content: center; color: var(--gold); flex-shrink: 0; background: rgba(137,101,224,0.18); border-radius: 50%; width: 38px; height: 38px; transition: background 0.2s, box-shadow 0.2s; box-shadow: 0 0 0 0 rgba(137,101,224,0.4); animation: arrowPulse 2.4s ease-in-out infinite; }
+    .trainer-name:hover .trainer-name-arrow { background: rgba(137,101,224,0.38); animation: none; box-shadow: 0 0 0 6px rgba(137,101,224,0.2); }
+    .trainer-name-arrow svg { animation: arrowSlide 2.4s ease-in-out infinite; }
+    .trainer-name:hover .trainer-name-arrow svg { animation: none; transform: translateX(2px); }
+    @keyframes arrowPulse { 0%,100%{box-shadow:0 0 0 0 rgba(137,101,224,0.4)} 50%{box-shadow:0 0 0 8px rgba(137,101,224,0)} }
+    @keyframes arrowSlide { 0%,100%{transform:translateX(0)} 50%{transform:translateX(3px)} }
+    .trainer-meet { font-size: 0.72rem; font-weight: 600; color: rgba(137,101,224,0.7); letter-spacing: 0.06em; margin-bottom: 16px; }
     .trainer-role { font-size: 0.8rem; font-weight: 600; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
     .trainer-quote { font-size: 1.05rem; color: rgba(255,255,255,0.6); font-style: italic; line-height: 1.8; margin-bottom: 28px; border-left: 3px solid var(--gold); padding-left: 20px; }
     .trainer-stats { display: flex; gap: 32px; flex-wrap: wrap; }
@@ -639,13 +644,14 @@
     <div class="section-label fade-up">Ваш тренер</div>
     <div class="trainer-wrap fade-up">
       <div class="trainer-photo">
-        <div class="trainer-initials">РФ</div>
+        <img src="photo.jpg" alt="Роберт Фитчелл — бизнес-тренер">
       </div>
       <div>
         <a href="https://robertfitchell.ru" class="trainer-name" target="_blank" rel="noopener">
           Роберт Фитчелл
-          <span class="trainer-name-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          <span class="trainer-name-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </a>
+        <div class="trainer-meet">познакомиться со спикером</div>
         <div class="trainer-role">Бизнес-тренер · с 2012 года</div>
         <div class="trainer-quote">Покупают не у опытных.<br>Покупают у тех, кто позволил себе брать деньги.</div>
         <div class="trainer-stats">

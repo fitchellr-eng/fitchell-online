@@ -188,15 +188,23 @@
     .speaker-name-link {
       font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; text-transform: uppercase;
       color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 12px;
-      margin-bottom: 6px; transition: opacity 0.2s;
+      margin-bottom: 4px; transition: opacity 0.2s;
     }
     .speaker-name-link:hover { opacity: 0.8; }
     .speaker-arrow {
       display: inline-flex; align-items: center; justify-content: center;
       color: var(--gold); background: rgba(137,101,224,0.18); border-radius: 50%;
-      width: 34px; height: 34px; transition: background 0.2s;
+      width: 36px; height: 36px; transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 0 0 rgba(137,101,224,0.4); animation: arrowPulse 2.4s ease-in-out infinite;
     }
-    .speaker-name-link:hover .speaker-arrow { background: rgba(137,101,224,0.35); }
+    .speaker-name-link:hover .speaker-arrow { background: rgba(137,101,224,0.38); animation: none; box-shadow: 0 0 0 6px rgba(137,101,224,0.2); }
+    .speaker-arrow svg { animation: arrowSlide 2.4s ease-in-out infinite; }
+    .speaker-name-link:hover .speaker-arrow svg { animation: none; transform: translateX(2px); }
+    @keyframes arrowPulse { 0%,100%{box-shadow:0 0 0 0 rgba(137,101,224,0.4)} 50%{box-shadow:0 0 0 8px rgba(137,101,224,0)} }
+    @keyframes arrowSlide { 0%,100%{transform:translateX(0)} 50%{transform:translateX(3px)} }
+    .speaker-meet { font-size: 0.72rem; font-weight: 600; color: rgba(137,101,224,0.7); letter-spacing: 0.06em; margin-bottom: 18px; }
+    .speaker-photo { width: 100%; height: 260px; border-radius: 16px; overflow: hidden; margin-bottom: 0; border: 1px solid var(--border); }
+    .speaker-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
     .speaker-role { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
     .speaker-stats { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
     .speaker-stat {
@@ -289,7 +297,8 @@
       .topic-item { padding: 22px 22px; }
       .reg-wrap { padding: 36px 24px; }
       .form-row { grid-template-columns: 1fr; }
-      .speaker-card { padding: 28px 24px; }
+      .speaker-card { padding: 28px 24px !important; grid-template-columns: 1fr !important; }
+      .speaker-photo { height: 200px; }
       .speaker-stats { gap: 10px; }
     }
   </style>
@@ -456,13 +465,18 @@
   <section id="speaker">
     <div class="fade-up">
       <div class="sec-label">Спикер</div>
-      <div class="speaker-card">
+      <div class="speaker-card" style="display:grid;grid-template-columns:200px 1fr;gap:36px;align-items:start;">
+        <div class="speaker-photo">
+          <img src="../photo.jpg" alt="Роберт Фитчелл — тренер по продажам">
+        </div>
+        <div>
         <a href="https://robertfitchell.ru" class="speaker-name-link" target="_blank" rel="noopener">
           Роберт Фитчелл
           <span class="speaker-arrow">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </span>
         </a>
+        <div class="speaker-meet">познакомиться со спикером</div>
         <div class="speaker-role">Тренер по продажам</div>
         <div class="speaker-stats">
           <div class="speaker-stat">
@@ -485,6 +499,7 @@
             <li>улучшить навыки работы с клиентом</li>
             <li>уйти от скриптов в живое общение с закрытием сделки</li>
           </ul>
+        </div>
         </div>
       </div>
     </div>
