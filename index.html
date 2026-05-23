@@ -193,7 +193,7 @@
     .forwhom-no  .forwhom-list li::before { content: '×'; color: rgba(255,255,255,0.25); flex-shrink: 0; font-weight: 700; }
 
     /* ── ТРЕНЕР ── */
-    .trainer-wrap { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; margin-top: 48px; }
+    .trainer-wrap { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; margin-top: 48px; background: rgba(4,2,14,0.6); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid var(--border); border-radius: 20px; padding: 40px; }
     .trainer-photo { width: 180px; height: 220px; border-radius: 16px; border: 1px solid var(--border); background: rgba(0,0,0,0.5); backdrop-filter: blur(12px); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
     .trainer-initials { font-size: 3rem; font-weight: 900; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .trainer-name { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: opacity 0.2s; }
@@ -241,7 +241,7 @@
     .btn-pay:hover svg { transform: translateX(3px); }
 
     /* ── FAQ ── */
-    .faq-list { margin-top: 48px; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .faq-list { margin-top: 48px; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: rgba(4,2,14,0.6); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
     .faq-item { border-bottom: 1px solid var(--border); }
     .faq-item:last-child { border-bottom: none; }
     .faq-q { width: 100%; background: none; border: none; padding: 22px 28px; display: flex; justify-content: space-between; align-items: center; gap: 20px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 0.92rem; font-weight: 700; color: #fff; text-align: left; transition: background 0.2s; }
@@ -344,7 +344,7 @@
     <div class="section-label fade-up">Решение</div>
     <div class="solution-box fade-up">
       <div class="solution-box-title">Это не курс «как научиться<br>продавать». Это система,<br>после которой вы <span class="accent">иначе стоите.</span></div>
-      <div class="solution-box-text">Большинство курсов дают технику без психологии. Мы работаем с обоими уровнями одновременно — убеждение меняется вместе с навыком. Очные занятия, живые разборы, практика на реальных ситуациях — каждый четверг.</div>
+      <div class="solution-box-text">Большинство курсов дают технику без психологии. Мы работаем с обоими уровнями одновременно — убеждение меняется вместе с навыком. Очные занятия, живые разборы, практика на реальных ситуациях каждую неделю.</div>
     </div>
   </section>
 
@@ -360,7 +360,7 @@
     <div class="format-grid">
       <div class="fmt-feature fade-up">
         <div class="fmt-feature-title">Очные занятия</div>
-        <div class="fmt-feature-text">Каждый четверг — 2–2,5 часа живой работы. Не вебинары, не записи. Живой контакт, разборы в реальном времени, энергия группы.</div>
+        <div class="fmt-feature-text">2–2,5 часа живой работы раз в неделю. Не вебинары, не записи. Живой контакт, разборы в реальном времени, энергия группы.</div>
       </div>
       <div class="fmt-feature fade-up">
         <div class="fmt-feature-title">Психология + техника</div>
@@ -381,7 +381,7 @@
       <div class="inc-card fade-up">
         <div class="inc-num">01</div>
         <div class="inc-title">Очные занятия</div>
-        <div class="inc-desc">Каждый четверг, 2–2,5 часа. Живой формат — единственное условие настоящей практики.</div>
+        <div class="inc-desc">Раз в неделю, 2–2,5 часа. Живой формат — единственное условие настоящей практики.</div>
       </div>
       <div class="inc-card fade-up">
         <div class="inc-num">02</div>
@@ -418,85 +418,154 @@
     <p class="section-sub fade-up">Нажмите на блок, чтобы раскрыть темы. Каждое занятие — 2 часа живой работы с разборами.</p>
 
     <div class="program-blocks">
+
+      <!-- МЕСЯЦ 1 -->
       <div class="program-block fade-up" onclick="toggleBlock(this)">
         <div class="program-block-header">
           <div class="program-block-num"><span>01</span></div>
           <div class="program-block-info">
-            <div class="program-block-label">Уроки 1–3 · Фундамент</div>
-            <div class="program-block-title">Психология денег и самоценность</div>
+            <div class="program-block-label">Уроки 1–5 · Месяц 1</div>
+            <div class="program-block-title">Фундамент</div>
           </div>
           <svg class="toggle-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <ul class="program-block-lessons">
-          <li><span class="lesson-num">01</span>Психология денег дизайнера. Откуда берётся стыд за цену — и как это убрать</li>
-          <li><span class="lesson-num">02</span>Самоценность и самопрезентация. Как говорить о себе уверенно и без хвастовства</li>
-          <li><span class="lesson-num">03</span>Постановка целей в деньгах. Декомпозиция: сколько клиентов, с каким чеком, к какой дате</li>
+          <li>
+            <span class="lesson-num">01</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Цели. Индивидуальный план развития</div>
+              Превращаете размытые желания в конкретный маршрут с дедлайнами. Больше никаких «хочу больше зарабатывать» — только фокус и результат.
+            </div>
+          </li>
+          <li>
+            <span class="lesson-num">02</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Поиск клиентов, установка контакта и работа с базой</div>
+              Перестаёте ждать — начинаете находить. Узнаёте, как вызвать доверие с первых секунд даже у «холодного» клиента. Повторные продажи, реактивация, системное касание.
+            </div>
+          </li>
+          <li>
+            <span class="lesson-num">03</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Импровизация и актёрское мастерство в продажах</div>
+              Думаете на ходу, реагируете естественно, удерживаете внимание — даже когда разговор идёт не по плану. Голос, паузы и жесты как инструмент влияния.
+            </div>
+          </li>
+          <li>
+            <span class="lesson-num">04</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Воронки продаж. Маркетинг и соцсети</div>
+              Видите весь путь клиента от первого касания до оплаты. Как соцсети работают внутри воронки: привлечение, прогрев, конверсия в заявку.
+            </div>
+          </li>
+          <li>
+            <span class="lesson-num">05</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Выявление потребностей</div>
+              Осваиваете метод активного слушания. Задаёте вопросы, которые выводят клиента на осознание собственной боли — и он сам приходит к решению купить.
+            </div>
+          </li>
         </ul>
       </div>
 
+      <!-- МЕСЯЦ 2 -->
       <div class="program-block fade-up" onclick="toggleBlock(this)">
         <div class="program-block-header">
           <div class="program-block-num"><span>02</span></div>
           <div class="program-block-info">
-            <div class="program-block-label">Уроки 4–6 · Первый контакт</div>
-            <div class="program-block-title">Переписка, встреча и квалификация клиента</div>
+            <div class="program-block-label">Уроки 6–10 · Месяц 2</div>
+            <div class="program-block-title">Рост чека</div>
           </div>
           <svg class="toggle-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <ul class="program-block-lessons">
-          <li><span class="lesson-num">04</span>Продажи в переписке. Скрипты первого ответа, перевод в звонок или встречу без потери клиента</li>
-          <li><span class="lesson-num">05</span>Квалификация клиента. Как выяснить бюджет и реальную задачу — без неловкости и лишних вопросов</li>
-          <li><span class="lesson-num">06</span>Продающая встреча. 5 этапов: подготовка, rapport, вопросы, презентация, закрытие — живая отработка</li>
+          <li>
+            <span class="lesson-num">06</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Тайм-менеджмент</div>
+              Управляете временем как ресурсом: приоритеты, фокус-блоки, защита от потерь. Продаёте больше — не работая больше.
+            </div>
+          </li>
+          <li>
+            <span class="lesson-num">07</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Презентация товара</div>
+              Говорите языком выгоды — цена перестаёт быть главным вопросом. Структура: боль → решение → результат. Каждое слово работает на продажу.
+            </div>
+          </li>
+          <li>
+            <span class="lesson-num">08</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Эмоциональный интеллект</div>
+              Управляете своим состоянием и считываете эмоции клиента. Спокойствие под давлением, гибкость в переговорах — клиент чувствует вашу уверенность и доверяет.
+            </div>
+          </li>
+          <li>
+            <span class="lesson-num">09</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Увеличение среднего чека. Дополнительные продажи</div>
+              Тот же клиент — больше денег. Upsell и cross-sell как часть заботы, а не манипуляция. Предлагаете дополнительные услуги естественно, без давления.
+            </div>
+          </li>
+          <li>
+            <span class="lesson-num">10</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Самопрезентация</div>
+              Клиент видит эксперта, которому доверяют и за которого платят дорого. Личный бренд в переговорах: голос, уверенность, позиция.
+            </div>
+          </li>
         </ul>
       </div>
 
+      <!-- МЕСЯЦ 3 -->
       <div class="program-block fade-up" onclick="toggleBlock(this)">
         <div class="program-block-header">
           <div class="program-block-num"><span>03</span></div>
           <div class="program-block-info">
-            <div class="program-block-label">Уроки 7–9 · Деньги и возражения</div>
-            <div class="program-block-title">Цена, «дорого» и триггеры решения</div>
+            <div class="program-block-label">Уроки 11–15 · Месяц 3</div>
+            <div class="program-block-title">Закрытие сделок</div>
           </div>
           <svg class="toggle-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <ul class="program-block-lessons">
-          <li><span class="lesson-num">07</span>Как называть цену. Обоснование, уверенность, упаковка ценности — без скидок и оправданий</li>
-          <li><span class="lesson-num">08</span>«Дорого», «подумаю», «муж сказал нет» — отработка возражений, которая двигает клиента вперёд</li>
-          <li><span class="lesson-num">09</span>Триггеры продаж: дефицит, срочность, социальное доказательство, авторитет — честно и без манипуляций</li>
+          <li>
+            <span class="lesson-num">11</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Отработка возражений</div>
+              «Дорого», «подумаю», «не сейчас» — у вас есть ответ на каждое. Возражение перестаёт быть отказом и становится шагом к сделке.
+            </div>
+          </li>
+          <li>
+            <span class="lesson-num">12</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Метод ведения переговоров на встрече</div>
+              Ведёте встречу, а не плывёте по течению. Управляете темпом, задаёте структуру, выходите с договорённостями — а не с «мы подумаем».
+            </div>
+          </li>
+          <li>
+            <span class="lesson-num">13</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Синдром самозванца. Проработка</div>
+              Называете цену без дрожи. Берёте крупные проекты без сомнений. Стоите своих денег — и знаете это.
+            </div>
+          </li>
+          <li>
+            <span class="lesson-num">14</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Завершение сделки</div>
+              Не теряете клиентов на финальном шаге. Закрываете без давления — так, что клиент сам говорит «да».
+            </div>
+          </li>
+          <li>
+            <span class="lesson-num">15</span>
+            <div>
+              <div style="font-weight:700;color:#fff;margin-bottom:4px;">Завершающая встреча. Выпускной</div>
+              Разбор ваших кейсов, личная обратная связь от Роберта, выход с готовой системой продаж.
+            </div>
+          </li>
         </ul>
       </div>
 
-      <div class="program-block fade-up" onclick="toggleBlock(this)">
-        <div class="program-block-header">
-          <div class="program-block-num"><span>04</span></div>
-          <div class="program-block-info">
-            <div class="program-block-label">Уроки 10–12 · Мастерство</div>
-            <div class="program-block-title">Импровизация, воронка и follow-up</div>
-          </div>
-          <svg class="toggle-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <ul class="program-block-lessons">
-          <li><span class="lesson-num">10</span>Актёрское мастерство и импровизация в продажах. Голос, паузы, реакция на неожиданный вопрос</li>
-          <li><span class="lesson-num">11</span>Воронка продаж дизайнера. Путь клиента от «кто вы» до «беру» — точки касания и конверсия</li>
-          <li><span class="lesson-num">12</span>Follow-up и работа с базой. Как напоминать о себе без навязчивости и не терять клиентов между этапами</li>
-        </ul>
-      </div>
-
-      <div class="program-block fade-up" onclick="toggleBlock(this)">
-        <div class="program-block-header">
-          <div class="program-block-num"><span>05</span></div>
-          <div class="program-block-info">
-            <div class="program-block-label">Уроки 13–15 · Система</div>
-            <div class="program-block-title">Тайм-менеджмент, портфолио и личный план</div>
-          </div>
-          <svg class="toggle-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <ul class="program-block-lessons">
-          <li><span class="lesson-num">13</span>Тайм-менеджмент дизайнера-продавца. Как выделить время на продажи, не жертвуя проектами</li>
-          <li><span class="lesson-num">14</span>Портфолио и экспертность. Как показывать результат, а не просто красивые фото — продающий кейс</li>
-          <li><span class="lesson-num">15</span>Финальный разбор. Личный план продаж на 3 месяца вперёд и следующий шаг</li>
-        </ul>
-      </div>
     </div>
   </section>
 
@@ -606,7 +675,7 @@
         <div class="price-period">в месяц · 3 месяца</div>
         <div class="price-total">Итого: 35 970 ₽</div>
         <ul class="price-features">
-          <li>15 очных занятий по 2 часа (каждый четверг)</li>
+          <li>5 занятий в месяц по 2 часа</li>
           <li>Закрытый чат с тренером и коллегами</li>
           <li>Домашние задания с разборами</li>
           <li>Материалы и методички навсегда</li>
@@ -625,7 +694,7 @@
         <div class="price-period">за 3 месяца целиком</div>
         <div class="price-save">Экономия ~6 000 ₽</div>
         <ul class="price-features">
-          <li>15 очных занятий по 2 часа (каждый четверг)</li>
+          <li>15 занятий по 2 часа · 3 месяца</li>
           <li>Закрытый чат с тренером и коллегами</li>
           <li>Домашние задания с разборами</li>
           <li>Материалы и методички навсегда</li>
