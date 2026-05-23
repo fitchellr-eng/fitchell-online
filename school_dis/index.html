@@ -97,12 +97,6 @@
     #hero { padding: 0 0 80px; }
     .hero-grid { display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: center; }
     .hero-photo-col { position: relative; }
-    .hero-photo-ring {
-      position: absolute; inset: -20px; border-radius: 28px;
-      background: conic-gradient(from 180deg, rgba(94,114,228,0.25), rgba(137,101,224,0.15), rgba(245,54,92,0.2), rgba(94,114,228,0.25));
-      animation: ringRotate 8s linear infinite; z-index: 0;
-    }
-    @keyframes ringRotate { to { transform: rotate(360deg); } }
     .hero-photo-wrap {
       position: relative; z-index: 1;
       border-radius: 24px; overflow: hidden;
@@ -388,7 +382,6 @@
         </div>
       </div>
       <div class="hero-photo-col fade-up">
-        <div class="hero-photo-ring"></div>
         <div class="hero-photo-wrap">
           <img src="photo.jpg" alt="Роберт Фитчелл — бизнес-тренер">
         </div>
