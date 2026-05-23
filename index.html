@@ -196,7 +196,9 @@
     .trainer-wrap { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; margin-top: 48px; }
     .trainer-photo { width: 180px; height: 220px; border-radius: 16px; border: 1px solid var(--border); background: rgba(0,0,0,0.5); backdrop-filter: blur(12px); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
     .trainer-initials { font-size: 3rem; font-weight: 900; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .trainer-name { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 6px; }
+    .trainer-name { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: opacity 0.2s; }
+    .trainer-name:hover { opacity: 0.8; }
+    .trainer-name-arrow { display: inline-flex; align-items: center; color: var(--gold); opacity: 0.7; flex-shrink: 0; }
     .trainer-role { font-size: 0.8rem; font-weight: 600; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
     .trainer-quote { font-size: 1.05rem; color: rgba(255,255,255,0.6); font-style: italic; line-height: 1.8; margin-bottom: 28px; border-left: 3px solid var(--gold); padding-left: 20px; }
     .trainer-stats { display: flex; gap: 32px; flex-wrap: wrap; }
@@ -570,13 +572,16 @@
         <div class="trainer-initials">РФ</div>
       </div>
       <div>
-        <div class="trainer-name">Роберт Фитчелл</div>
+        <a href="https://robertfitchell.ru" class="trainer-name" target="_blank" rel="noopener">
+          Роберт Фитчелл
+          <span class="trainer-name-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </a>
         <div class="trainer-role">Бизнес-тренер · с 2012 года</div>
         <div class="trainer-quote">Покупают не у опытных.<br>Покупают у тех, кто позволил себе брать деньги.</div>
         <div class="trainer-stats">
-          <div><div class="trainer-stat-num">7 000+</div><div class="trainer-stat-lbl">Консультантов</div></div>
-          <div><div class="trainer-stat-num">5 000+</div><div class="trainer-stat-lbl">Предпринимателей</div></div>
-          <div><div class="trainer-stat-num">15 000+</div><div class="trainer-stat-lbl">Часов тренингов</div></div>
+          <div><div class="trainer-stat-num">18+</div><div class="trainer-stat-lbl">Лет в продажах</div></div>
+          <div><div class="trainer-stat-num">14+</div><div class="trainer-stat-lbl">Лет в обучении</div></div>
+          <div><div class="trainer-stat-num">10 000+</div><div class="trainer-stat-lbl">Менеджеров</div></div>
           <div><div class="trainer-stat-num">100+</div><div class="trainer-stat-lbl">Спикеров со сцены</div></div>
         </div>
       </div>
