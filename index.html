@@ -2,10 +2,308 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=/school_dis/">
-  <title>Роберт Фитчелл</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Роберт Фитчелл — Бизнес-тренер</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #8965e0;
+      --bg-2: rgba(0,0,0,0.65);
+      --text: #f0f0f0;
+      --muted: #888888;
+      --border: rgba(137,101,224,0.2);
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+      background: #000;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      cursor: none;
+    }
+
+    /* ── CUSTOM CURSOR ── */
+    .cursor {
+      width: 8px; height: 8px;
+      background: #ffffff;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: width .3s, height .3s, background .3s;
+    }
+    .cursor-ring {
+      width: 40px; height: 40px;
+      border: 1.5px solid rgba(137,101,224,0.7);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: width .3s, height .3s;
+    }
+
+    /* ── TUBES ── */
+    #tubes-wrapper {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 0;
+    }
+    #tubes-canvas {
+      display: block;
+      width: 100%; height: 100%;
+    }
+    .tubes-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.45) 100%);
+      pointer-events: none;
+    }
+    #tubes-loader {
+      position: fixed; inset: 0; z-index: 600;
+      background: #000;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.6s ease;
+    }
+    #tubes-loader.hidden { opacity: 0; pointer-events: none; }
+    #tubes-loader-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #8965e0;
+      animation: ldpulse 1s ease-in-out infinite;
+    }
+    @keyframes ldpulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.8);opacity:0.4} }
+
+    .color-flash {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%,-50%) scale(0);
+      width: 200px; height: 200px; border-radius: 50%;
+      pointer-events: none; z-index: 5; opacity: 0;
+    }
+    .color-flash.active { animation: ripple 0.6s ease-out forwards; }
+    @keyframes ripple {
+      0%   { transform: translate(-50%,-50%) scale(0); opacity: 0.15; }
+      100% { transform: translate(-50%,-50%) scale(8); opacity: 0; }
+    }
+
+    /* ── HERO ── */
+    .page {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 32px 24px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(137,101,224,0.1);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-tag-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: .7;
+    }
+
+    .hero-name {
+      font-size: clamp(3.2rem, 7.5vw, 7.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: .9;
+      letter-spacing: .02em;
+      margin-bottom: 28px;
+      color: #fff;
+      text-shadow:
+        0 0 40px  rgba(94,114,228,.55),
+        0 0 100px rgba(94,114,228,.3),
+        0 0 200px rgba(137,101,224,.15);
+    }
+    .hero-name .accent {
+      background: linear-gradient(135deg, #5e72e4, #8965e0, #f5365c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.75rem, 1.4vw, 0.95rem);
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 52px;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #5e72e4, #8965e0, #f5365c);
+      color: #fff;
+      padding: 15px 40px;
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(94,114,228,.4);
+      transition: transform 0.25s, box-shadow 0.25s, opacity 0.25s;
+    }
+    .hero-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 36px rgba(137,101,224,.55);
+      opacity: .9;
+    }
+    .hero-btn svg {
+      transition: transform 0.25s;
+    }
+    .hero-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      position: fixed;
+      bottom: 28px;
+      left: 0; right: 0;
+      z-index: 10;
+      text-align: center;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .hero-name { font-size: clamp(2.8rem, 13vw, 4.5rem); }
+    }
+  </style>
 </head>
 <body>
-  <script>window.location.replace("/school_dis/");</script>
+
+<!-- TUBES -->
+<div id="tubes-loader"><div id="tubes-loader-dot"></div></div>
+<div id="tubes-wrapper">
+  <canvas id="tubes-canvas"></canvas>
+</div>
+<div class="tubes-overlay"></div>
+<div class="color-flash" id="colorFlash"></div>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- CONTENT -->
+<div class="page">
+  <div class="hero-tag">
+    <span class="hero-tag-dot"></span>
+    Бизнес-тренер
+  </div>
+
+  <h1 class="hero-name">
+    Роберт<br><span class="accent">Фитчелл</span>
+  </h1>
+
+  <p class="hero-sub">Системы продаж · Корпоративные тренинги</p>
+
+  <a href="https://robertfitchell.ru" class="hero-btn">
+    Перейти на сайт
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.5"
+         stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+      <polyline points="12 5 19 12 12 19"/>
+    </svg>
+  </a>
+</div>
+
+<div class="page-footer">robertfitchell.online · Нажми куда угодно — смени палитру</div>
+
+<!-- CURSOR JS -->
+<script>
+  const cur = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px';
+    cur.style.top  = e.clientY + 'px';
+    rx += (e.clientX - rx) * 0.12;
+    ry += (e.clientY - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+  });
+  setInterval(() => {
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+  }, 16);
+</script>
+
+<!-- TUBES JS -->
+<script>
+  const PALETTES = [
+    { tubes: ["#5e72e4","#8965e0","#f5365c"], lights: ["#21d4fd","#b721ff","#11cdef","#5e72e4"] },
+    { tubes: ["#11cdef","#2dce89","#fb6340"], lights: ["#11cdef","#2dce89","#f7fafc","#fb6340"] },
+    { tubes: ["#f5365c","#fd7347","#ffd600"], lights: ["#f5365c","#fd7347","#ffd600","#ff3ea5"] },
+    { tubes: ["#2dce89","#2bffc6","#5e72e4"], lights: ["#2dce89","#2bffc6","#adb5bd","#5e72e4"] },
+    { tubes: ["#b721ff","#ff3ea5","#5e72e4"], lights: ["#b721ff","#ff3ea5","#21d4fd","#5e72e4"] },
+  ];
+  let paletteIndex = 0;
+  let tubesApp = null;
+  const tubesCanvas = document.getElementById('tubes-canvas');
+  const tubesLoader = document.getElementById('tubes-loader');
+  const flash = document.getElementById('colorFlash');
+
+  setTimeout(() => {
+    import('https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js')
+      .then(module => {
+        tubesApp = module.default(tubesCanvas, {
+          tubes: {
+            colors: PALETTES[0].tubes,
+            lights: { intensity: 200, colors: PALETTES[0].lights }
+          }
+        });
+        tubesLoader.classList.add('hidden');
+      })
+      .catch(() => { tubesLoader.classList.add('hidden'); });
+  }, 150);
+
+  document.addEventListener('click', () => {
+    if (!tubesApp) return;
+    paletteIndex = (paletteIndex + 1) % PALETTES.length;
+    const p = PALETTES[paletteIndex];
+    tubesApp.tubes.setColors(p.tubes);
+    tubesApp.tubes.setLightsColors(p.lights);
+    flash.style.background = p.tubes[0];
+    flash.classList.remove('active');
+    void flash.offsetWidth;
+    flash.classList.add('active');
+  });
+</script>
+
 </body>
 </html>
