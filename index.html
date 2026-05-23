@@ -73,8 +73,18 @@
       text-decoration: none; transition: opacity 0.2s, transform 0.2s;
     }
     .nav-cta:hover { opacity: .88; transform: translateY(-1px); }
+    .nav-socials { display: flex; gap: 8px; align-items: center; }
+    .nav-social {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 9px;
+      background: rgba(137,101,224,0.12); border: 1px solid var(--border);
+      color: rgba(255,255,255,0.6); transition: background 0.2s, color 0.2s, border-color 0.2s;
+      text-decoration: none; flex-shrink: 0;
+    }
+    .nav-social:hover { background: rgba(137,101,224,0.25); color: #fff; border-color: rgba(137,101,224,0.45); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
 
-    main { max-width: 1100px; margin: 0 auto; padding: 120px 40px 80px; }
+    main { max-width: 1200px; margin: 0 auto; padding: 120px 60px 80px; }
     section { padding: 80px 0; border-bottom: 1px solid var(--border); }
     section:last-child { border-bottom: none; }
 
@@ -85,6 +95,20 @@
 
     /* ── HERO ── */
     #hero { padding: 0 0 80px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: center; }
+    .hero-photo-col { position: relative; }
+    .hero-photo-ring {
+      position: absolute; inset: -20px; border-radius: 28px;
+      background: conic-gradient(from 180deg, rgba(94,114,228,0.25), rgba(137,101,224,0.15), rgba(245,54,92,0.2), rgba(94,114,228,0.25));
+      animation: ringRotate 8s linear infinite; z-index: 0;
+    }
+    @keyframes ringRotate { to { transform: rotate(360deg); } }
+    .hero-photo-wrap {
+      position: relative; z-index: 1;
+      border-radius: 24px; overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .hero-photo-wrap img { width: 100%; display: block; object-fit: cover; object-position: top center; }
     .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(137,101,224,0.1); border: 1px solid var(--border); color: var(--gold); padding: 6px 16px; border-radius: 100px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 28px; }
     .hero-tag span { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); opacity: .7; }
     .hero-name { font-size: clamp(2.6rem, 6vw, 6rem); font-weight: 900; text-transform: uppercase; line-height: .9; letter-spacing: .02em; margin-bottom: 28px; color: #fff; text-shadow: 0 0 40px rgba(94,114,228,.5), 0 0 100px rgba(94,114,228,.25); }
@@ -194,7 +218,7 @@
 
     /* ── ТРЕНЕР ── */
     .trainer-wrap { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; margin-top: 48px; background: rgba(4,2,14,0.6); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid var(--border); border-radius: 20px; padding: 40px; }
-    .trainer-photo { width: 180px; height: 240px; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; flex-shrink: 0; }
+    .trainer-photo { width: 240px; height: 310px; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; flex-shrink: 0; }
     .trainer-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
     .trainer-name { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 4px; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: opacity 0.2s; }
     .trainer-name:hover { opacity: 0.8; }
@@ -265,29 +289,50 @@
     .cta-sub { font-size: 1rem; color: var(--muted); margin-bottom: 40px; line-height: 1.7; }
     .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-    footer { padding: 32px 40px; text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.2); border-top: 1px solid var(--border); }
-    footer a { color: inherit; text-decoration: none; }
+    footer { padding: 36px 60px; border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+    .footer-copy a { color: rgba(255,255,255,0.35); text-decoration: none; }
+    .footer-copy a:hover { color: var(--gold); }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(137,101,224,0.1); border: 1px solid var(--border);
+      border-radius: 10px; padding: 8px 16px;
+      color: rgba(255,255,255,0.55); font-size: 0.78rem; font-weight: 600;
+      text-decoration: none; transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .footer-social:hover { background: rgba(137,101,224,0.22); color: #fff; border-color: rgba(137,101,224,0.4); }
 
     /* ── FADE ── */
     .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: none; }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      main { padding: 110px 40px 80px; }
+      .hero-grid { grid-template-columns: 1fr 320px; gap: 44px; }
+    }
     @media (max-width: 900px) {
       main { padding: 100px 24px 60px; }
       nav { padding: 16px 24px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-photo-col { display: none; }
       .results-grid { grid-template-columns: 1fr 1fr; }
       .fmt-big, .format-grid { grid-template-columns: 1fr; }
       .forwhom-grid, .price-cards { grid-template-columns: 1fr; }
       .trainer-wrap { grid-template-columns: 1fr; }
-      .trainer-photo { width: 100%; height: 140px; }
+      .trainer-photo { width: 100%; height: 200px; }
       .cta-box { padding: 40px 28px; }
+      footer { padding: 28px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
     }
     @media (max-width: 600px) {
       .hero-stats { gap: 24px; }
       .results-grid { grid-template-columns: 1fr; }
       nav { padding: 14px 20px; }
       .nav-cta { display: none; }
+      .nav-socials { display: none; }
     }
   </style>
 </head>
@@ -302,32 +347,52 @@
 
 <nav>
   <a href="#hero" class="nav-logo">Школа продаж</a>
-  <a href="#price" class="nav-cta">Записаться</a>
+  <div class="nav-right">
+    <div class="nav-socials">
+      <a href="https://instagram.com/fitchellr" class="nav-social" target="_blank" rel="noopener" title="Instagram">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://t.me/RobertFitchell" class="nav-social" target="_blank" rel="noopener" title="Telegram">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+      </a>
+    </div>
+    <a href="#price" class="nav-cta">Записаться</a>
+  </div>
 </nav>
 
 <main>
 
   <!-- ── HERO ── -->
   <section id="hero">
-    <div class="hero-tag"><span></span>Ближайший поток · Уфа и Екатеринбург</div>
-    <h1 class="hero-name fade-up">
-      Школа продаж<br>для <span class="accent">дизайнеров</span>
-    </h1>
-    <p class="hero-tagline fade-up">
-      <strong>Продавать дорого. Без стыда. Без скидок.</strong><br>
-      С достоинством — и понятной технологией.
-    </p>
-    <div class="hero-stats fade-up">
-      <div><div class="hero-stat-num">3</div><div class="hero-stat-label">Месяца</div></div>
-      <div><div class="hero-stat-num">15</div><div class="hero-stat-label">Занятий очно</div></div>
-      <div><div class="hero-stat-num">20</div><div class="hero-stat-label">Мест в группе</div></div>
-    </div>
-    <div class="hero-btns fade-up">
-      <a href="#price" class="hero-btn-primary">
-        Занять место
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="#program" class="hero-btn-secondary">Программа</a>
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag fade-up"><span></span>Ближайший поток · Уфа и Екатеринбург</div>
+        <h1 class="hero-name fade-up">
+          Школа продаж<br>для <span class="accent">дизайнеров</span>
+        </h1>
+        <p class="hero-tagline fade-up">
+          <strong>Продавать дорого. Без стыда. Без скидок.</strong><br>
+          С достоинством — и понятной технологией.
+        </p>
+        <div class="hero-stats fade-up">
+          <div><div class="hero-stat-num">3</div><div class="hero-stat-label">Месяца</div></div>
+          <div><div class="hero-stat-num">15</div><div class="hero-stat-label">Занятий очно</div></div>
+          <div><div class="hero-stat-num">20</div><div class="hero-stat-label">Мест в группе</div></div>
+        </div>
+        <div class="hero-btns fade-up">
+          <a href="#price" class="hero-btn-primary">
+            Занять место
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#program" class="hero-btn-secondary">Программа</a>
+        </div>
+      </div>
+      <div class="hero-photo-col fade-up">
+        <div class="hero-photo-ring"></div>
+        <div class="hero-photo-wrap">
+          <img src="photo.jpg" alt="Роберт Фитчелл — бизнес-тренер">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -784,7 +849,21 @@
 </main>
 
 <footer>
-  © 2025 Роберт Фитчелл · <a href="https://robertfitchell.ru">robertfitchell.ru</a>
+  <div class="footer-inner">
+    <div class="footer-copy">
+      © 2025 Роберт Фитчелл · <a href="https://robertfitchell.ru" target="_blank" rel="noopener">robertfitchell.ru</a>
+    </div>
+    <div class="footer-socials">
+      <a href="https://instagram.com/fitchellr" class="footer-social" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a href="https://t.me/RobertFitchell" class="footer-social" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+        Telegram
+      </a>
+    </div>
+  </div>
 </footer>
 
 <script>
