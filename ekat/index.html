@@ -39,23 +39,15 @@
     #tubes-loader.hidden { opacity: 0; pointer-events: none; }
     #tubes-loader-dot { width: 8px; height: 8px; border-radius: 50%; background: #8965e0; animation: ldpulse 1s ease-in-out infinite; }
     @keyframes ldpulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.8);opacity:0.4} }
-    .color-flash {
-      position: fixed; top: 50%; left: 50%;
-      transform: translate(-50%,-50%) scale(0);
-      width: 200px; height: 200px; border-radius: 50%;
-      pointer-events: none; z-index: 5; opacity: 0;
-    }
+    .color-flash { position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0); width: 200px; height: 200px; border-radius: 50%; pointer-events: none; z-index: 5; opacity: 0; }
     .color-flash.active { animation: ripple 0.6s ease-out forwards; }
-    @keyframes ripple {
-      0%   { transform: translate(-50%,-50%) scale(0); opacity: 0.15; }
-      100% { transform: translate(-50%,-50%) scale(8); opacity: 0; }
-    }
+    @keyframes ripple { 0%{transform:translate(-50%,-50%) scale(0);opacity:0.15} 100%{transform:translate(-50%,-50%) scale(8);opacity:0} }
 
     /* ── CURSOR ── */
     .cursor      { width: 8px; height: 8px; background: #fff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); }
     .cursor-ring { width: 40px; height: 40px; border: 1.5px solid rgba(137,101,224,0.7); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); }
 
-    /* ── LAYOUT ── */
+    /* ── NAV ── */
     nav, main, footer { position: relative; z-index: 2; }
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -68,14 +60,16 @@
     .nav-cta {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--grad); color: #fff;
-      padding: 9px 22px; border-radius: 8px;
+      padding: 10px 26px; border-radius: 8px;
       font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em;
       text-decoration: none; transition: opacity 0.2s, transform 0.2s;
     }
     .nav-cta:hover { opacity: .88; transform: translateY(-1px); }
 
-    main { max-width: 860px; margin: 0 auto; padding: 120px 40px 80px; }
-    section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+    /* ── LAYOUT ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 60px; }
+    main { padding-top: 100px; }
+    section { padding: 80px 0; border-bottom: 1px solid var(--border); }
     section:last-child { border-bottom: none; }
 
     /* ── FADE UP ── */
@@ -85,57 +79,85 @@
     /* ── LABELS ── */
     .sec-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
 
-    /* ── HERO ── */
+    /* ─────────────── HERO ─────────────── */
+    #hero { padding: 80px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 420px; gap: 56px; align-items: center; }
     .event-badge {
       display: inline-flex; align-items: center; gap: 10px;
       background: rgba(137,101,224,0.15); border: 1px solid rgba(137,101,224,0.35);
       border-radius: 100px; padding: 7px 18px;
       font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
-      color: var(--gold); text-transform: uppercase; margin-bottom: 32px;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 28px;
     }
     .event-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--a3); animation: ldpulse 1.4s ease-in-out infinite; flex-shrink: 0; }
     .hero-title {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 900; text-transform: uppercase; line-height: 1.05;
-      color: #fff; margin-bottom: 24px; letter-spacing: -0.01em;
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 900; text-transform: uppercase; line-height: 1.02;
+      color: #fff; margin-bottom: 20px; letter-spacing: -0.02em;
     }
     .hero-title .grad { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 640px; }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 36px; max-width: 520px; }
+    .hero-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--grad); color: #fff;
+      padding: 16px 36px; border-radius: 12px;
+      font-size: 1rem; font-weight: 800; letter-spacing: 0.04em;
+      text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+    }
+    .hero-btn:hover { opacity: 0.88; transform: translateY(-2px); }
 
-    /* ── PAIN BLOCK ── */
-    .pain-box {
-      background: rgba(4,2,14,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--border); border-radius: 20px; padding: 44px 48px;
+    /* Hero right — event info card */
+    .hero-info-card {
+      background: rgba(4,2,14,0.6); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border); border-radius: 24px; padding: 36px 32px;
       position: relative; overflow: hidden;
     }
-    .pain-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); }
-    .pain-list { list-style: none; display: flex; flex-direction: column; gap: 18px; margin-bottom: 32px; }
-    .pain-list li {
-      font-size: 1.05rem; font-weight: 600; color: #fff; line-height: 1.5;
-      padding-left: 28px; position: relative;
+    .hero-info-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); }
+    .hero-info-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
+    .meta-list { display: flex; flex-direction: column; gap: 18px; margin-bottom: 28px; }
+    .meta-item { display: flex; align-items: center; gap: 14px; }
+    .meta-icon {
+      width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(137,101,224,0.18); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; color: var(--gold);
     }
-    .pain-list li::before {
-      content: '—'; position: absolute; left: 0; color: var(--gold); font-weight: 700;
+    .meta-label { font-size: 0.7rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+    .meta-val { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .hero-info-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: rgba(137,101,224,0.12); border: 1px solid rgba(137,101,224,0.3);
+      border-radius: 10px; padding: 13px 20px;
+      color: #fff; font-size: 0.85rem; font-weight: 700; text-decoration: none;
+      transition: background 0.2s;
     }
+    .hero-info-btn:hover { background: rgba(137,101,224,0.22); }
+
+    /* ─────────────── PAIN ─────────────── */
+    .pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 28px; }
+    .pain-card {
+      background: rgba(4,2,14,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px;
+      position: relative; overflow: hidden;
+    }
+    .pain-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); }
+    .pain-card-num { font-size: 2rem; font-weight: 900; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 14px; }
+    .pain-card-text { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.9); line-height: 1.55; }
     .pain-answer {
-      font-size: 1rem; color: rgba(255,255,255,0.75); line-height: 1.8;
-      border-top: 1px solid var(--border); padding-top: 24px;
+      background: rgba(4,2,14,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(137,101,224,0.3); border-radius: 14px;
+      padding: 22px 28px; font-size: 1rem; color: rgba(255,255,255,0.75); line-height: 1.8; text-align: center;
     }
     .pain-answer strong { color: #fff; }
 
-    /* ── TWO COLUMNS ── */
+    /* ─────────────── VALUE ─────────────── */
     .two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .col-card {
       background: rgba(4,2,14,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--border); border-radius: 18px; padding: 32px 28px;
+      border: 1px solid var(--border); border-radius: 18px; padding: 36px 32px;
     }
-    .col-card-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
-    .check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .col-card-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
     .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.55; }
-    .check-list li::before { content: ''; display: block; width: 18px; height: 18px; border-radius: 50%; background: var(--grad); flex-shrink: 0; margin-top: 2px; position: relative; }
-    .check-list li::before { background: rgba(137,101,224,0.25); border: 1.5px solid var(--gold); }
-
-    /* use SVG checkmark via background-image on pseudo */
     .check-list li span.chk {
       display: inline-flex; align-items: center; justify-content: center;
       width: 20px; height: 20px; border-radius: 50%;
@@ -144,57 +166,39 @@
       color: var(--gold); font-size: 11px; font-weight: 900; line-height: 1;
     }
 
-    /* ── EVENT META ── */
-    .meta-box {
-      background: rgba(4,2,14,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--border); border-radius: 18px; padding: 36px 40px;
-      display: flex; flex-wrap: wrap; gap: 28px; align-items: center;
-    }
-    .meta-item { display: flex; align-items: center; gap: 12px; }
-    .meta-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: rgba(137,101,224,0.18); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gold); flex-shrink: 0;
-    }
-    .meta-label { font-size: 0.72rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
-    .meta-val { font-size: 0.95rem; font-weight: 700; color: #fff; }
-
-    /* ── TOPIC BLOCKS ── */
-    .topic-list { display: flex; flex-direction: column; gap: 16px; }
+    /* ─────────────── TOPICS ─────────────── */
+    .topic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .topic-item {
       background: rgba(4,2,14,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--border); border-radius: 16px; padding: 28px 32px;
+      border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px;
     }
-    .topic-title { font-size: 1rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-    .topic-title::before { content: '→'; color: var(--gold); font-size: 1.1rem; }
-    .topic-desc { font-size: 0.93rem; color: rgba(255,255,255,0.7); line-height: 1.75; }
-    .topic-desc + .topic-desc { margin-top: 8px; }
+    .topic-title { font-size: 0.95rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; }
+    .topic-title::before { content: '→'; color: var(--gold); font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .topic-desc { font-size: 0.88rem; color: rgba(255,255,255,0.68); line-height: 1.75; }
 
-    /* ── QUOTE ── */
+    /* ─────────────── QUOTE ─────────────── */
     .quote-block {
       background: rgba(4,2,14,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
       border: 1px solid var(--border); border-left: 3px solid var(--gold);
-      border-radius: 0 16px 16px 0; padding: 32px 36px;
+      border-radius: 0 20px 20px 0; padding: 36px 44px;
     }
-    .quote-text { font-size: 1.15rem; font-weight: 700; color: #fff; line-height: 1.6; font-style: italic; }
+    .quote-text { font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 700; color: #fff; line-height: 1.6; font-style: italic; }
     .quote-text .accent { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
-    /* ── SPEAKER ── */
-    .speaker-card {
-      background: rgba(4,2,14,0.6); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--border); border-radius: 20px; padding: 40px;
-    }
+    /* ─────────────── SPEAKER ─────────────── */
+    .speaker-grid { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; }
+    .speaker-photo { border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
+    .speaker-photo img { width: 100%; display: block; object-fit: cover; object-position: top center; }
     .speaker-name-link {
-      font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; text-transform: uppercase;
-      color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 12px;
+      font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 900; text-transform: uppercase;
+      color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 14px;
       margin-bottom: 4px; transition: opacity 0.2s;
     }
     .speaker-name-link:hover { opacity: 0.8; }
     .speaker-arrow {
       display: inline-flex; align-items: center; justify-content: center;
       color: var(--gold); background: rgba(137,101,224,0.18); border-radius: 50%;
-      width: 36px; height: 36px; transition: background 0.2s, box-shadow 0.2s;
+      width: 40px; height: 40px; transition: background 0.2s, box-shadow 0.2s;
       box-shadow: 0 0 0 0 rgba(137,101,224,0.4); animation: arrowPulse 2.4s ease-in-out infinite;
     }
     .speaker-name-link:hover .speaker-arrow { background: rgba(137,101,224,0.38); animation: none; box-shadow: 0 0 0 6px rgba(137,101,224,0.2); }
@@ -202,56 +206,42 @@
     .speaker-name-link:hover .speaker-arrow svg { animation: none; transform: translateX(2px); }
     @keyframes arrowPulse { 0%,100%{box-shadow:0 0 0 0 rgba(137,101,224,0.4)} 50%{box-shadow:0 0 0 8px rgba(137,101,224,0)} }
     @keyframes arrowSlide { 0%,100%{transform:translateX(0)} 50%{transform:translateX(3px)} }
-    .speaker-meet { font-size: 0.72rem; font-weight: 600; color: rgba(137,101,224,0.7); letter-spacing: 0.06em; margin-bottom: 18px; }
-    .speaker-photo { width: 100%; height: 260px; border-radius: 16px; overflow: hidden; margin-bottom: 0; border: 1px solid var(--border); }
-    .speaker-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-    .speaker-role { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
-    .speaker-stats { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
-    .speaker-stat {
-      background: rgba(137,101,224,0.1); border: 1px solid var(--border); border-radius: 10px;
-      padding: 10px 18px;
-    }
-    .speaker-stat-num { font-size: 1.3rem; font-weight: 900; color: #fff; line-height: 1; }
-    .speaker-stat-label { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
-    .speaker-helps { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
+    .speaker-meet { font-size: 0.72rem; font-weight: 600; color: rgba(137,101,224,0.7); letter-spacing: 0.06em; margin-bottom: 20px; }
+    .speaker-role { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 28px; }
+    .speaker-stats { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 28px; }
+    .speaker-stat { background: rgba(137,101,224,0.1); border: 1px solid var(--border); border-radius: 12px; padding: 14px 22px; }
+    .speaker-stat-num { font-size: 1.5rem; font-weight: 900; color: #fff; line-height: 1; }
+    .speaker-stat-label { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
+    .speaker-helps { font-size: 0.88rem; color: rgba(255,255,255,0.65); }
     .speaker-helps strong { color: rgba(255,255,255,0.85); }
-    .speaker-help-list { list-style: none; margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
-    .speaker-help-list li { display: flex; gap: 8px; }
+    .speaker-help-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .speaker-help-list li { display: flex; gap: 10px; }
     .speaker-help-list li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
 
-    /* ── BONUS ── */
-    .bonus-box {
-      background: rgba(4,2,14,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(137,101,224,0.35); border-radius: 16px; padding: 28px 32px;
-      font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.75;
-    }
-    .bonus-box strong { color: #fff; }
+    /* ─────────────── REG SECTION ─────────────── */
+    #reg { background: none; }
+    .reg-grid { display: grid; grid-template-columns: 1fr 420px; gap: 56px; align-items: start; }
 
-    /* ── REGISTRATION FORM ── */
     .reg-wrap {
       background: rgba(4,2,14,0.6); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
       border: 1px solid var(--border); border-radius: 24px; padding: 52px 48px;
       position: relative; overflow: hidden;
     }
     .reg-wrap::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); }
-    .reg-title { font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 8px; }
+    .reg-title { font-size: clamp(1.4rem, 2vw, 2rem); font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 8px; }
     .reg-title .grad { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .reg-sub { font-size: 0.9rem; color: rgba(255,255,255,0.5); margin-bottom: 36px; }
+    .reg-sub { font-size: 0.88rem; color: rgba(255,255,255,0.45); margin-bottom: 36px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-group label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); text-transform: uppercase; }
-    .form-group input, .form-group select {
+    .form-group label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.45); text-transform: uppercase; }
+    .form-group input {
       background: rgba(255,255,255,0.05); border: 1px solid var(--border);
       border-radius: 10px; padding: 14px 18px;
       font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: #fff;
       outline: none; transition: border-color 0.2s, background 0.2s;
-      -webkit-appearance: none;
     }
-    .form-group input::placeholder { color: rgba(255,255,255,0.25); }
-    .form-group input:focus, .form-group select:focus {
-      border-color: var(--gold); background: rgba(137,101,224,0.07);
-    }
-    .form-group select option { background: #0d0b1e; color: #fff; }
+    .form-group input::placeholder { color: rgba(255,255,255,0.22); }
+    .form-group input:focus { border-color: var(--gold); background: rgba(137,101,224,0.07); }
     .form-submit {
       width: 100%; margin-top: 8px;
       background: var(--grad); color: #fff; border: none;
@@ -262,25 +252,37 @@
       display: flex; align-items: center; justify-content: center; gap: 10px;
     }
     .form-submit:hover { opacity: 0.88; transform: translateY(-2px); }
-    .form-note { font-size: 0.72rem; color: rgba(255,255,255,0.3); text-align: center; margin-top: 14px; line-height: 1.6; }
+    .form-note { font-size: 0.7rem; color: rgba(255,255,255,0.25); text-align: center; margin-top: 14px; line-height: 1.6; }
+
+    /* Registration right side */
+    .reg-side { display: flex; flex-direction: column; gap: 16px; padding-top: 8px; }
+    .reg-side-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .reg-check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+    .reg-check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.55; }
+    .reg-check-list li span.chk {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(137,101,224,0.2); border: 1.5px solid var(--gold);
+      flex-shrink: 0; margin-top: 1px;
+      color: var(--gold); font-size: 11px; font-weight: 900; line-height: 1;
+    }
+    .reg-bonus {
+      background: rgba(4,2,14,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(137,101,224,0.3); border-radius: 14px; padding: 20px 22px;
+      font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.7;
+    }
+    .reg-bonus strong { color: #fff; }
 
     /* ── SUCCESS STATE ── */
-    .form-success {
-      display: none; text-align: center; padding: 40px 0;
-    }
-    .form-success-icon {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: rgba(137,101,224,0.2); border: 2px solid var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px; color: var(--gold); font-size: 1.5rem;
-    }
+    .form-success { display: none; text-align: center; padding: 40px 0; }
+    .form-success-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(137,101,224,0.2); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--gold); }
     .form-success h3 { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
     .form-success p { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
 
     /* ── FOOTER ── */
     footer {
       position: relative; z-index: 2;
-      text-align: center; padding: 40px;
+      text-align: center; padding: 40px 60px;
       font-size: 0.8rem; color: rgba(255,255,255,0.3);
       border-top: 1px solid var(--border);
     }
@@ -288,18 +290,29 @@
     footer a:hover { opacity: 0.8; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 680px) {
+    @media (max-width: 1024px) {
+      .container { padding: 0 40px; }
+      .hero-grid { grid-template-columns: 1fr 360px; gap: 40px; }
+      .reg-grid { grid-template-columns: 1fr; }
+      .reg-side { padding-top: 0; }
+      .reg-check-list { display: grid; grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
       nav { padding: 14px 20px; }
-      main { padding: 90px 20px 60px; }
-      .pain-box { padding: 28px 24px; }
+      .container { padding: 0 20px; }
+      main { padding-top: 80px; }
+      section { padding: 60px 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-title { font-size: clamp(2rem,8vw,2.8rem); }
+      .pain-grid { grid-template-columns: 1fr; }
       .two-cols { grid-template-columns: 1fr; }
-      .meta-box { flex-direction: column; gap: 20px; }
-      .topic-item { padding: 22px 22px; }
-      .reg-wrap { padding: 36px 24px; }
+      .topic-grid { grid-template-columns: 1fr; }
+      .speaker-grid { grid-template-columns: 1fr; }
+      .speaker-photo { max-width: 280px; }
       .form-row { grid-template-columns: 1fr; }
-      .speaker-card { padding: 28px 24px !important; grid-template-columns: 1fr !important; }
-      .speaker-photo { height: 200px; }
-      .speaker-stats { gap: 10px; }
+      .reg-wrap { padding: 36px 24px; }
+      .reg-check-list { grid-template-columns: 1fr; }
+      footer { padding: 32px 20px; }
     }
   </style>
 </head>
@@ -309,7 +322,6 @@
 <div id="tubes-wrapper"><canvas id="tubes-canvas"></canvas></div>
 <div class="tubes-overlay"></div>
 <div class="color-flash" id="colorFlash"></div>
-
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
@@ -321,33 +333,77 @@
 <main>
 
   <!-- ── HERO ── -->
-  <section id="hero" style="padding-top: 20px; padding-bottom: 56px;">
-    <div class="fade-up">
-      <div class="event-badge">
-        <span class="event-badge-dot"></span>
-        3 июня · Екатеринбург
+  <section id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="fade-up">
+            <div class="event-badge">
+              <span class="event-badge-dot"></span>
+              3 июня · Екатеринбург
+            </div>
+          </div>
+          <div class="fade-up" style="transition-delay:0.08s">
+            <h1 class="hero-title">Открытый<br>урок для<br><span class="grad">дизайнеров</span></h1>
+          </div>
+          <div class="fade-up" style="transition-delay:0.14s">
+            <p class="hero-sub">Приглашение на живую встречу — без воды, только практика и реальные инструменты для роста чека.</p>
+            <a href="#reg" class="hero-btn">
+              Занять место
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="fade-up" style="transition-delay:0.18s">
+          <div class="hero-info-card">
+            <div class="hero-info-title">Детали встречи</div>
+            <div class="meta-list">
+              <div class="meta-item">
+                <div class="meta-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+                <div><div class="meta-label">Дата</div><div class="meta-val">3 июня 2025</div></div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div><div class="meta-label">Длительность</div><div class="meta-val">2,5 часа</div></div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                <div><div class="meta-label">Город</div><div class="meta-val">Екатеринбург</div></div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                <div><div class="meta-label">Формат</div><div class="meta-val">Очная встреча</div></div>
+              </div>
+            </div>
+            <a href="#reg" class="hero-info-btn">
+              Записаться бесплатно
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="fade-up" style="transition-delay: 0.08s;">
-      <h1 class="hero-title">
-        Открытый урок<br>для дизайнеров<br><span class="grad">интерьеров</span>
-      </h1>
-    </div>
-    <div class="fade-up" style="transition-delay: 0.14s;">
-      <p class="hero-sub">Приглашение на живую встречу — без воды, только практика и реальные инструменты для роста чека.</p>
     </div>
   </section>
 
   <!-- ── БОЛИ ── -->
   <section id="pain">
-    <div class="fade-up">
-      <div class="sec-label">Узнаёте себя?</div>
-      <div class="pain-box">
-        <ul class="pain-list">
-          <li>Вы делаете крутые проекты, но клиенты всё равно торгуются?</li>
-          <li>Вы больше учитесь, больше работаете, а чек растёт едва заметно?</li>
-          <li>Внутри страшно назвать настоящую цену — и вы снова соглашаетесь на меньшее?</li>
-        </ul>
+    <div class="container">
+      <div class="fade-up">
+        <div class="sec-label">Узнаёте себя?</div>
+        <div class="pain-grid">
+          <div class="pain-card">
+            <div class="pain-card-num">01</div>
+            <div class="pain-card-text">Вы делаете крутые проекты, но клиенты всё равно торгуются?</div>
+          </div>
+          <div class="pain-card">
+            <div class="pain-card-num">02</div>
+            <div class="pain-card-text">Вы больше учитесь, больше работаете, а чек растёт едва заметно?</div>
+          </div>
+          <div class="pain-card">
+            <div class="pain-card-num">03</div>
+            <div class="pain-card-text">Внутри страшно назвать настоящую цену — и вы снова соглашаетесь на меньшее?</div>
+          </div>
+        </div>
         <div class="pain-answer">
           <strong>Если хотя бы на один ответили «да» — эта встреча для вас.</strong>
         </div>
@@ -357,67 +413,25 @@
 
   <!-- ── ЧТО БУДЕТ / ЧТО ВЫНЕСЕТЕ ── -->
   <section id="value">
-    <div class="fade-up">
-      <div class="sec-label">На уроке</div>
-      <div class="two-cols">
-        <div class="col-card">
-          <div class="col-card-title">Что вас ждёт</div>
-          <ul class="check-list">
-            <li><span class="chk">+</span>Живая работа с вашими запросами</li>
-            <li><span class="chk">+</span>Разбор реальных ситуаций участников</li>
-            <li><span class="chk">+</span>Нетворкинг — знакомство и общение с коллегами-дизайнерами в тёплой атмосфере</li>
-          </ul>
-        </div>
-        <div class="col-card">
-          <div class="col-card-title">Что вынесете</div>
-          <ul class="check-list">
-            <li><span class="chk">+</span>Увидите, где именно вы теряете деньги — ещё до этапа переговоров</li>
-            <li><span class="chk">+</span>Получите первый инструмент для повышения чека без чувства вины</li>
-            <li><span class="chk">+</span>Уйдёте с внутренним разрешением называть свою цену твёрдо</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── МЕТА ── -->
-  <section id="meta" style="padding: 40px 0;">
-    <div class="fade-up">
-      <div class="meta-box">
-        <div class="meta-item">
-          <div class="meta-icon">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <div class="container">
+      <div class="fade-up">
+        <div class="sec-label">На уроке</div>
+        <div class="two-cols">
+          <div class="col-card">
+            <div class="col-card-title">Что вас ждёт</div>
+            <ul class="check-list">
+              <li><span class="chk">+</span>Живая работа с вашими запросами</li>
+              <li><span class="chk">+</span>Разбор реальных ситуаций участников</li>
+              <li><span class="chk">+</span>Нетворкинг — знакомство и общение с коллегами-дизайнерами в тёплой атмосфере</li>
+            </ul>
           </div>
-          <div>
-            <div class="meta-label">Дата</div>
-            <div class="meta-val">3 июня 2025</div>
-          </div>
-        </div>
-        <div class="meta-item">
-          <div class="meta-icon">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <div class="meta-label">Длительность</div>
-            <div class="meta-val">2,5 часа</div>
-          </div>
-        </div>
-        <div class="meta-item">
-          <div class="meta-icon">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div>
-            <div class="meta-label">Город</div>
-            <div class="meta-val">Екатеринбург</div>
-          </div>
-        </div>
-        <div class="meta-item">
-          <div class="meta-icon">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div>
-            <div class="meta-label">Формат</div>
-            <div class="meta-val">Очная встреча</div>
+          <div class="col-card">
+            <div class="col-card-title">Что вынесете</div>
+            <ul class="check-list">
+              <li><span class="chk">+</span>Увидите, где именно вы теряете деньги — ещё до этапа переговоров</li>
+              <li><span class="chk">+</span>Получите первый инструмент для повышения чека без чувства вины</li>
+              <li><span class="chk">+</span>Уйдёте с внутренним разрешением называть свою цену твёрдо</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -426,36 +440,40 @@
 
   <!-- ── О ЧЁМ ПОГОВОРИМ ── -->
   <section id="topics">
-    <div class="fade-up">
-      <div class="sec-label">Программа урока</div>
-      <div class="topic-list">
-        <div class="topic-item">
-          <div class="topic-title">Твой реальный «уровень нормы» в деньгах</div>
-          <div class="topic-desc">Увидишь, к какому чеку за проект привыкла твоя психика. Поймёшь, почему при попытке назвать достойную цену внутри включается ступор — и ты снова соглашаешься на мелкие заказы.</div>
-        </div>
-        <div class="topic-item">
-          <div class="topic-title">Диагностика убеждений, которые режут тебе цену</div>
-          <div class="topic-desc">Разберём, где сидят ограничивающие мысли и как они сливают твои деньги в переговорах с заказчиками. Вы перестанете долбиться в стену — бесконечно учиться, больше работать, но оставаться при том же чеке. Увидите, на каком именно уровне у вас пробка. И получите первый шаг, чтобы перейти на уровень выше — без выгорания.</div>
-        </div>
-        <div class="topic-item">
-          <div class="topic-title">Чёткий маркер: детская или взрослая позиция в деньгах</div>
-          <div class="topic-desc">Ты увидишь себя со стороны и получишь конкретные признаки взрослой позиции — это напрямую влияет на то, платит тебе клиент или тянет с оплатой.</div>
-        </div>
-        <div class="topic-item">
-          <div class="topic-title">Работа с позволением и достоинством</div>
-          <div class="topic-desc">Почему сложно называть цену, просить предоплату, говорить «нет» токсичным клиентам? Как получить внутреннее разрешение стоить дороже.</div>
+    <div class="container">
+      <div class="fade-up">
+        <div class="sec-label">Программа урока</div>
+        <div class="topic-grid">
+          <div class="topic-item">
+            <div class="topic-title">Твой реальный «уровень нормы» в деньгах</div>
+            <div class="topic-desc">Увидишь, к какому чеку за проект привыкла твоя психика. Поймёшь, почему при попытке назвать достойную цену внутри включается ступор — и ты снова соглашаешься на мелкие заказы.</div>
+          </div>
+          <div class="topic-item">
+            <div class="topic-title">Диагностика убеждений, которые режут тебе цену</div>
+            <div class="topic-desc">Разберём, где сидят ограничивающие мысли и как они сливают твои деньги в переговорах. Увидите, на каком именно уровне у вас пробка — и получите первый шаг, чтобы перейти выше без выгорания.</div>
+          </div>
+          <div class="topic-item">
+            <div class="topic-title">Детская или взрослая позиция в деньгах</div>
+            <div class="topic-desc">Ты увидишь себя со стороны и получишь конкретные признаки взрослой позиции — это напрямую влияет на то, платит тебе клиент или тянет с оплатой.</div>
+          </div>
+          <div class="topic-item">
+            <div class="topic-title">Работа с позволением и достоинством</div>
+            <div class="topic-desc">Почему сложно называть цену, просить предоплату, говорить «нет» токсичным клиентам? Как получить внутреннее разрешение стоить дороже.</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ── ЦИТАТА ── -->
-  <section id="quote" style="padding: 40px 0; border-bottom: none;">
-    <div class="fade-up">
-      <div class="quote-block">
-        <div class="quote-text">
-          Покупают не у самых опытных.<br>
-          Покупают у тех, кто <span class="accent">внутренне позволил себе</span> брать достойные деньги.
+  <section id="quote" style="padding: 48px 0;">
+    <div class="container">
+      <div class="fade-up">
+        <div class="quote-block">
+          <div class="quote-text">
+            Покупают не у самых опытных.<br>
+            Покупают у тех, кто <span class="accent">внутренне позволил себе</span> брать достойные деньги.
+          </div>
         </div>
       </div>
     </div>
@@ -463,98 +481,106 @@
 
   <!-- ── СПИКЕР ── -->
   <section id="speaker">
-    <div class="fade-up">
-      <div class="sec-label">Спикер</div>
-      <div class="speaker-card" style="display:grid;grid-template-columns:200px 1fr;gap:36px;align-items:start;">
-        <div class="speaker-photo">
-          <img src="../photo.jpg" alt="Роберт Фитчелл — тренер по продажам">
-        </div>
-        <div>
-        <a href="https://robertfitchell.ru" class="speaker-name-link" target="_blank" rel="noopener">
-          Роберт Фитчелл
-          <span class="speaker-arrow">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </a>
-        <div class="speaker-meet">познакомиться со спикером</div>
-        <div class="speaker-role">Тренер по продажам</div>
-        <div class="speaker-stats">
-          <div class="speaker-stat">
-            <div class="speaker-stat-num">18+</div>
-            <div class="speaker-stat-label">лет опыта в продажах</div>
+    <div class="container">
+      <div class="fade-up">
+        <div class="sec-label">Спикер</div>
+        <div class="speaker-grid">
+          <div class="speaker-photo">
+            <img src="../photo.jpg" alt="Роберт Фитчелл — тренер по продажам">
           </div>
-          <div class="speaker-stat">
-            <div class="speaker-stat-num">14+</div>
-            <div class="speaker-stat-label">лет практики тренера</div>
+          <div>
+            <a href="https://robertfitchell.ru" class="speaker-name-link" target="_blank" rel="noopener">
+              Роберт Фитчелл
+              <span class="speaker-arrow">
+                <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            </a>
+            <div class="speaker-meet">познакомиться со спикером</div>
+            <div class="speaker-role">Тренер по продажам</div>
+            <div class="speaker-stats">
+              <div class="speaker-stat">
+                <div class="speaker-stat-num">18+</div>
+                <div class="speaker-stat-label">лет опыта в продажах</div>
+              </div>
+              <div class="speaker-stat">
+                <div class="speaker-stat-num">14+</div>
+                <div class="speaker-stat-label">лет практики тренера</div>
+              </div>
+              <div class="speaker-stat">
+                <div class="speaker-stat-num">10 000+</div>
+                <div class="speaker-stat-label">учеников разных сфер</div>
+              </div>
+            </div>
+            <div class="speaker-helps">
+              <strong>Помогает клиентам:</strong>
+              <ul class="speaker-help-list">
+                <li>поднять конверсию</li>
+                <li>улучшить навыки работы с клиентом</li>
+                <li>уйти от скриптов в живое общение с закрытием сделки</li>
+              </ul>
+            </div>
           </div>
-          <div class="speaker-stat">
-            <div class="speaker-stat-num">10 000+</div>
-            <div class="speaker-stat-label">учеников разных сфер</div>
-          </div>
         </div>
-        <div class="speaker-helps">
-          <strong>Помогает клиентам:</strong>
-          <ul class="speaker-help-list">
-            <li>поднять конверсию</li>
-            <li>улучшить навыки работы с клиентом</li>
-            <li>уйти от скриптов в живое общение с закрытием сделки</li>
-          </ul>
-        </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── БОНУС ── -->
-  <section id="bonus" style="padding: 40px 0;">
-    <div class="fade-up">
-      <div class="bonus-box">
-        <strong>Бонусом на уроке:</strong> разберём реальные ситуации участников. Приходите со своей болью.<br>
-        И не забудьте захватить визитки или ссылки на портфолио — будет нетворкинг с коллегами!
       </div>
     </div>
   </section>
 
   <!-- ── РЕГИСТРАЦИЯ ── -->
   <section id="reg">
-    <div class="fade-up">
-      <div class="reg-wrap">
-        <div class="reg-title">Записаться на <span class="grad">открытый урок</span></div>
-        <div class="reg-sub">3 июня · Екатеринбург · Места ограничены</div>
-
-        <form id="regForm" action="https://formspree.io/f/REPLACE_FORM_ID" method="POST">
-          <input type="hidden" name="_subject" value="Запись на открытый урок — Екатеринбург 3 июня">
-          <input type="hidden" name="_next" value="https://robertfitchell.online/ekat/?success=1">
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName">Имя</label>
-              <input type="text" id="firstName" name="firstName" placeholder="Введите имя" required autocomplete="given-name">
+    <div class="container">
+      <div class="fade-up">
+        <div class="reg-grid">
+          <!-- Форма -->
+          <div class="reg-wrap">
+            <div class="reg-title">Записаться на <span class="grad">открытый урок</span></div>
+            <div class="reg-sub">3 июня · Екатеринбург · Места ограничены</div>
+            <form id="regForm" action="https://formspree.io/f/REPLACE_FORM_ID" method="POST">
+              <input type="hidden" name="_subject" value="Запись на открытый урок — Екатеринбург 3 июня">
+              <input type="hidden" name="_next" value="https://robertfitchell.online/ekat/?success=1">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">Имя</label>
+                  <input type="text" id="firstName" name="firstName" placeholder="Введите имя" required autocomplete="given-name">
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Фамилия</label>
+                  <input type="text" id="lastName" name="lastName" placeholder="Введите фамилию" required autocomplete="family-name">
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom:16px">
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+              </div>
+              <button type="submit" class="form-submit">
+                Занять место на уроке
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+              <div class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Никакого спама.</div>
+            </form>
+            <div class="form-success" id="formSuccess">
+              <div class="form-success-icon">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h3>Вы записаны!</h3>
+              <p>Свяжемся с вами ближе к дате урока и пришлём адрес встречи.</p>
             </div>
-            <div class="form-group">
-              <label for="lastName">Фамилия</label>
-              <input type="text" id="lastName" name="lastName" placeholder="Введите фамилию" required autocomplete="family-name">
+          </div>
+          <!-- Правая колонка -->
+          <div class="reg-side">
+            <div>
+              <div class="reg-side-title">Что получите на уроке</div>
+              <ul class="reg-check-list">
+                <li><span class="chk">+</span>Живая работа с вашими запросами</li>
+                <li><span class="chk">+</span>Разбор реальных ситуаций участников</li>
+                <li><span class="chk">+</span>Первый инструмент для роста чека</li>
+                <li><span class="chk">+</span>Внутреннее разрешение называть цену твёрдо</li>
+                <li><span class="chk">+</span>Нетворкинг с коллегами-дизайнерами</li>
+              </ul>
+            </div>
+            <div class="reg-bonus">
+              <strong>Бонус:</strong> разберём реальные ситуации участников. Приходите со своей болью. Захватите визитки или ссылку на портфолио — будет нетворкинг!
             </div>
           </div>
-
-          <div class="form-group" style="margin-bottom: 16px;">
-            <label for="phone">Телефон</label>
-            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
-          </div>
-
-          <button type="submit" class="form-submit">
-            Занять место на уроке
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
-          <div class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Никакого спама.</div>
-        </form>
-
-        <div class="form-success" id="formSuccess">
-          <div class="form-success-icon">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <h3>Вы записаны!</h3>
-          <p>Свяжемся с вами ближе к дате урока и пришлём адрес встречи.</p>
         </div>
       </div>
     </div>
@@ -575,22 +601,18 @@
   });
   setInterval(() => { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }, 16);
 </script>
-
 <script>
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
-
 <script>
-  // Show success if redirected back
   if (window.location.search.includes('success=1')) {
     document.getElementById('regForm').style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
   }
 </script>
-
 <script>
   const PALETTES = [
     { tubes: ["#5e72e4","#8965e0","#f5365c"], lights: ["#21d4fd","#b721ff","#11cdef","#5e72e4"] },
@@ -601,7 +623,6 @@
   ];
   let paletteIndex = 0, tubesApp = null;
   const flash = document.getElementById('colorFlash');
-
   setTimeout(() => {
     import('https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js')
       .then(module => {
@@ -612,9 +633,8 @@
       })
       .catch(() => document.getElementById('tubes-loader').classList.add('hidden'));
   }, 150);
-
   document.addEventListener('click', e => {
-    if (e.target.closest('a, button, input, select, label')) return;
+    if (e.target.closest('a, button, input, label')) return;
     if (!tubesApp) return;
     paletteIndex = (paletteIndex + 1) % PALETTES.length;
     const p = PALETTES[paletteIndex];
