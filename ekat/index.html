@@ -65,6 +65,12 @@
       text-decoration: none; transition: opacity 0.2s, transform 0.2s;
     }
     .nav-cta:hover { opacity: .88; transform: translateY(-1px); }
+    .nav-socials { display: flex; gap: 8px; align-items: center; }
+    .nav-social { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 9px; background: rgba(137,101,224,0.12); border: 1px solid var(--border); color: rgba(255,255,255,0.6); transition: background 0.2s, color 0.2s, border-color 0.2s; text-decoration: none; }
+    .nav-social:hover { background: rgba(137,101,224,0.25); color: #fff; border-color: rgba(137,101,224,0.45); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .footer-social { display: inline-flex; align-items: center; gap: 7px; background: rgba(137,101,224,0.1); border: 1px solid var(--border); border-radius: 9px; padding: 7px 14px; color: rgba(255,255,255,0.5); font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+    .footer-social:hover { background: rgba(137,101,224,0.22); color: #fff; border-color: rgba(137,101,224,0.4); }
 
     /* ── LAYOUT ── */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 60px; }
@@ -327,7 +333,17 @@
 
 <nav>
   <a href="https://robertfitchell.online" class="nav-logo">ФИТЧЕЛЛ</a>
-  <a href="#reg" class="nav-cta">Записаться на урок</a>
+  <div class="nav-right">
+    <div class="nav-socials">
+      <a href="https://instagram.com/fitchellr" class="nav-social" target="_blank" rel="noopener" title="Instagram">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://t.me/RobertFitchell" class="nav-social" target="_blank" rel="noopener" title="Telegram">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+      </a>
+    </div>
+    <a href="#reg" class="nav-cta">Записаться на урок</a>
+  </div>
 </nav>
 
 <main>
@@ -589,7 +605,21 @@
 </main>
 
 <footer>
-  © 2025 Роберт Фитчелл · <a href="https://robertfitchell.ru" target="_blank" rel="noopener">robertfitchell.ru</a> · <a href="https://robertfitchell.online">Школа продаж</a>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+    <div style="font-size:0.75rem;color:rgba(255,255,255,0.22);">
+      © 2025 Роберт Фитчелл · <a href="https://robertfitchell.ru" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.35);text-decoration:none;">robertfitchell.ru</a> · <a href="https://robertfitchell.online" style="color:rgba(255,255,255,0.35);text-decoration:none;">Школа продаж</a>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <a href="https://instagram.com/fitchellr" class="footer-social" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a href="https://t.me/RobertFitchell" class="footer-social" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+        Telegram
+      </a>
+    </div>
+  </div>
 </footer>
 
 <script>
