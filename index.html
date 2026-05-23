@@ -123,7 +123,7 @@
     .pain-text { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
 
     /* ── РЕШЕНИЕ ── */
-    .solution-box { margin-top: 48px; background: rgba(137,101,224,0.07); border: 1px solid rgba(137,101,224,0.22); border-radius: 20px; padding: 44px 48px; position: relative; overflow: hidden; }
+    .solution-box { margin-top: 48px; background: rgba(4,2,14,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(137,101,224,0.22); border-radius: 20px; padding: 44px 48px; position: relative; overflow: hidden; }
     .solution-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); }
     .solution-box-title { font-size: clamp(1.3rem, 2.5vw, 2rem); font-weight: 900; text-transform: uppercase; color: #fff; line-height: 1.1; margin-bottom: 20px; }
     .solution-box-title .accent { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -198,7 +198,8 @@
     .trainer-initials { font-size: 3rem; font-weight: 900; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .trainer-name { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: opacity 0.2s; }
     .trainer-name:hover { opacity: 0.8; }
-    .trainer-name-arrow { display: inline-flex; align-items: center; color: var(--gold); opacity: 0.7; flex-shrink: 0; }
+    .trainer-name-arrow { display: inline-flex; align-items: center; color: var(--gold); opacity: 1; flex-shrink: 0; background: rgba(137,101,224,0.18); border-radius: 50%; width: 36px; height: 36px; justify-content: center; transition: background 0.2s; }
+    .trainer-name:hover .trainer-name-arrow { background: rgba(137,101,224,0.35); }
     .trainer-role { font-size: 0.8rem; font-weight: 600; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
     .trainer-quote { font-size: 1.05rem; color: rgba(255,255,255,0.6); font-style: italic; line-height: 1.8; margin-bottom: 28px; border-left: 3px solid var(--gold); padding-left: 20px; }
     .trainer-stats { display: flex; gap: 32px; flex-wrap: wrap; }
