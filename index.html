@@ -34,9 +34,10 @@
       background: #ffffff;
       border-radius: 50%;
       position: fixed;
+      top: 0; left: 0;
       pointer-events: none;
       z-index: 9999;
-      transform: translate(-50%,-50%);
+      will-change: transform;
       transition: width .3s, height .3s, background .3s;
     }
     .cursor-ring {
@@ -44,9 +45,10 @@
       border: 1.5px solid rgba(137,101,224,0.7);
       border-radius: 50%;
       position: fixed;
+      top: 0; left: 0;
       pointer-events: none;
       z-index: 9998;
-      transform: translate(-50%,-50%);
+      will-change: transform;
       transition: width .3s, height .3s;
     }
 
@@ -256,16 +258,12 @@
   const cur = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cur.style.left = mx + 'px';
-    cur.style.top  = my + 'px';
-  });
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
   (function loop() {
+    cur.style.transform  = 'translate(' + (mx - 4)  + 'px,' + (my - 4)  + 'px)';
     rx += (mx - rx) * 0.12;
     ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
+    ring.style.transform = 'translate(' + (rx - 20) + 'px,' + (ry - 20) + 'px)';
     requestAnimationFrame(loop);
   })();
 </script>
