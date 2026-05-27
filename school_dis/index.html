@@ -272,6 +272,82 @@
     .faq-a { display: none; padding: 0 28px 22px; font-size: 0.86rem; color: rgba(255,255,255,0.65); line-height: 1.75; }
     .faq-item.open .faq-a { display: block; }
 
+    /* ── ФОРМА ВОПРОСОВ ── */
+    .contact-form-wrap {
+      margin-top: 48px;
+      background: rgba(4,2,14,0.6);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(137,101,224,0.25);
+      border-radius: 24px;
+      padding: 48px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-form-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--grad);
+    }
+    .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .contact-form-field { display: flex; flex-direction: column; gap: 8px; }
+    .contact-form-field.full { grid-column: 1 / -1; }
+    .contact-form-field label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .contact-form-field input,
+    .contact-form-field textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(137,101,224,0.2);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      width: 100%;
+    }
+    .contact-form-field textarea { resize: vertical; min-height: 100px; }
+    .contact-form-field input::placeholder,
+    .contact-form-field textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .contact-form-field input:focus,
+    .contact-form-field textarea:focus {
+      border-color: rgba(137,101,224,0.5);
+      background: rgba(137,101,224,0.06);
+    }
+    .contact-form-submit {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--grad);
+      color: #fff;
+      border: none;
+      padding: 16px 36px;
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      box-shadow: 0 4px 24px rgba(94,114,228,.35);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .contact-form-submit:hover { opacity: .88; transform: translateY(-2px); }
+    .contact-form-success {
+      display: none;
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 24px;
+      border: 1px solid rgba(45,206,137,0.3);
+      border-radius: 12px;
+      background: rgba(45,206,137,0.07);
+      color: #2dce89;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
     /* ── CTA ── */
     .cta-box { background: rgba(4,2,14,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(137,101,224,0.25); border-radius: 24px; padding: 64px 52px; text-align: center; position: relative; overflow: hidden; }
     .cta-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); }
@@ -315,6 +391,8 @@
       .trainer-wrap { grid-template-columns: 1fr; }
       .trainer-photo { width: 100%; height: 200px; }
       .cta-box { padding: 40px 28px; }
+      .contact-form-wrap { padding: 32px 24px; }
+      .contact-form { grid-template-columns: 1fr; }
       footer { padding: 28px 24px; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
     }
@@ -826,6 +904,37 @@
     </div>
   </section>
 
+  <!-- ── ФОРМА ВОПРОСОВ ── -->
+  <section id="contact">
+    <div class="section-label fade-up">Есть вопросы?</div>
+    <h2 class="section-title fade-up">Остались вопросы —<br><span class="accent">напишите нам</span></h2>
+    <p class="section-sub fade-up">Заполните форму, и мы свяжемся с вами в течение дня.</p>
+
+    <div class="contact-form-wrap fade-up">
+      <form class="contact-form" id="contactForm">
+        <div class="contact-form-field">
+          <label for="cf-name">Ваше имя</label>
+          <input type="text" id="cf-name" name="name" placeholder="Роберт" required>
+        </div>
+        <div class="contact-form-field">
+          <label for="cf-phone">Телефон или Telegram</label>
+          <input type="text" id="cf-phone" name="contact" placeholder="+7 900 000 00 00 или @username" required>
+        </div>
+        <div class="contact-form-field full">
+          <label for="cf-msg">Ваш вопрос</label>
+          <textarea id="cf-msg" name="message" placeholder="Напишите, что вас интересует — город, формат, даты или что-то ещё..."></textarea>
+        </div>
+        <div class="contact-form-success" id="cfSuccess">
+          Спасибо! Мы получили ваш вопрос и свяжемся с вами в течение дня.
+        </div>
+        <button type="submit" class="contact-form-submit">
+          Отправить вопрос
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
   <!-- ── CTA ── -->
   <section id="cta">
     <div class="cta-box fade-up">
@@ -908,6 +1017,35 @@
       })
       .catch(() => document.getElementById('tubes-loader').classList.add('hidden'));
   }, 150);
+
+  // ── Форма вопросов ──
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.contact-form-submit');
+    btn.disabled = true;
+    btn.textContent = 'Отправляем...';
+    try {
+      const res = await fetch('https://formspree.io/f/xpwqkbjg', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(this)
+      });
+      if (res.ok) {
+        this.querySelectorAll('input, textarea').forEach(el => el.style.display = 'none');
+        this.querySelectorAll('label').forEach(el => el.style.display = 'none');
+        btn.style.display = 'none';
+        document.getElementById('cfSuccess').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Отправить вопрос';
+        alert('Ошибка отправки. Напишите нам в Telegram: @RobertFitchell');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Отправить вопрос';
+      alert('Ошибка отправки. Напишите нам в Telegram: @RobertFitchell');
+    }
+  });
 
   document.addEventListener('click', e => {
     if (e.target.closest('a, button')) return;
