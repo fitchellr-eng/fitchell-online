@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Публичная оферта — Роберт Фитчелл</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:   #8965e0;
+      --a1:     #5e72e4;
+      --a2:     #8965e0;
+      --a3:     #f5365c;
+      --text:   #f0f0f0;
+      --muted:  #999999;
+      --border: rgba(137,101,224,0.2);
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #04020e;
+      color: var(--text);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(4,2,14,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #5e72e4, #8965e0, #f5365c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .doc-title {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #5e72e4, #8965e0, #f5365c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .doc-subtitle {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .doc-meta {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 48px;
+    }
+
+    .doc-section {
+      margin-bottom: 36px;
+    }
+    .doc-section-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    p {
+      font-size: 0.88rem;
+      color: rgba(240,240,240,0.85);
+      margin-bottom: 12px;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    .clause {
+      font-size: 0.87rem;
+      color: rgba(240,240,240,0.85);
+      margin-bottom: 10px;
+      padding-left: 0;
+    }
+    .clause strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    ul.clause-list {
+      list-style: none;
+      margin: 8px 0 12px;
+      padding: 0;
+    }
+    ul.clause-list li {
+      font-size: 0.87rem;
+      color: rgba(240,240,240,0.85);
+      padding: 6px 0 6px 18px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    ul.clause-list li:last-child { border-bottom: none; }
+    ul.clause-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    .requisites-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    .requisites-table tr {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .requisites-table tr:last-child { border-bottom: none; }
+    .requisites-table td {
+      padding: 9px 4px;
+      font-size: 0.85rem;
+      vertical-align: top;
+    }
+    .requisites-table td:first-child {
+      color: var(--muted);
+      font-weight: 600;
+      width: 46%;
+      padding-right: 16px;
+    }
+    .requisites-table td:last-child {
+      color: rgba(240,240,240,0.9);
+    }
+
+    .accept-note {
+      margin-top: 48px;
+      padding: 20px 24px;
+      background: rgba(137,101,224,0.07);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.85rem;
+      color: rgba(240,240,240,0.7);
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+    }
+    footer a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--gold); }
+
+    @media (max-width: 480px) {
+      nav { padding: 14px 16px; }
+      main { padding: 40px 16px 60px; }
+      .requisites-table td:first-child { width: 42%; }
+    }
+  </style>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=109423466','ym');
+    ym(109423466,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/109423466" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<nav>
+  <a href="/school_dis/" class="nav-brand">Роберт Фитчелл</a>
+  <a href="/school_dis/" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+    Назад
+  </a>
+</nav>
+
+<main>
+  <h1 class="doc-title">Договор публичной оферты</h1>
+  <p class="doc-subtitle">на оказание услуг по проведению тренингов и консультаций в сфере продаж</p>
+  <p class="doc-meta">г. Уфа &nbsp;·&nbsp; 14.05.2026</p>
+
+  <!-- ОБЩИЕ ПОЛОЖЕНИЯ -->
+  <div class="doc-section">
+    <div class="doc-section-title">Общие положения</div>
+    <p class="clause">Настоящий документ является публичной офертой физического лица, применяющего специальный налоговый режим «Налог на профессиональный доход» (далее — «Исполнитель»), и содержит все существенные условия договора об оказании услуг по проведению тренингов и индивидуальных консультаций в сфере продаж.</p>
+    <p class="clause">В соответствии со статьёй 437 Гражданского кодекса Российской Федерации в случае принятия изложенных ниже условий лицо, производящее акцепт оферты (далее — «Заказчик»), становится стороной настоящего договора (далее — «Договор»).</p>
+    <p class="clause">Акцептом настоящей оферты является факт оплаты Заказчиком стоимости услуг в порядке, предусмотренном настоящим Договором. С момента поступления денежных средств на счёт Исполнителя Договор считается заключённым без подписания письменного экземпляра.</p>
+  </div>
+
+  <!-- 1. СТОРОНЫ -->
+  <div class="doc-section">
+    <div class="doc-section-title">1. Стороны договора</div>
+    <p class="clause"><strong>1.1. Исполнитель:</strong></p>
+    <table class="requisites-table">
+      <tr><td>ФИО</td><td>Ахметгареев Роберт Рамзилевич</td></tr>
+      <tr><td>ИНН</td><td>027502395090</td></tr>
+      <tr><td>Справка самозанятого</td><td>№ 104348748 от 26.03.2026</td></tr>
+      <tr><td>Адрес</td><td>г. Уфа, Республика Башкортостан</td></tr>
+      <tr><td>Телефон</td><td>+7 917 79 55 239</td></tr>
+      <tr><td>Псевдоним</td><td>Роберт Фитчелл (используется в рекламных и информационных материалах)</td></tr>
+      <tr><td>Электронная почта</td><td>Fitchellr@gmail.com</td></tr>
+      <tr><td>Расчётный счёт</td><td>40817810808100065011</td></tr>
+    </table>
+    <p class="clause" style="margin-top:16px;"><strong>1.2. Заказчик:</strong> любое дееспособное физическое лицо, достигшее возраста 18 лет, либо юридическое лицо / индивидуальный предприниматель, акцептовавшее настоящую оферту в порядке, установленном разделом 3 Договора.</p>
+  </div>
+
+  <!-- 2. ПРЕДМЕТ -->
+  <div class="doc-section">
+    <div class="doc-section-title">2. Предмет договора</div>
+    <p class="clause"><strong>2.1.</strong> Исполнитель обязуется оказать Заказчику следующие услуги:</p>
+    <ul class="clause-list">
+      <li>проведение очных (офлайн) тренингов по продажам — групповое обучение в формате практических занятий;</li>
+      <li>проведение индивидуальных консультаций по вопросам продаж, переговоров и построения системы сбыта.</li>
+    </ul>
+    <p class="clause"><strong>2.2.</strong> Конкретный перечень, тема, дата, время, место проведения и стоимость каждой Услуги определяются в Программе / Описании, которое Исполнитель публикует на платформе или направляет Заказчику в письменном виде (мессенджер, e-mail) до момента оплаты. Актуальное описание услуг: <a href="https://t.me/Fitchell_school_bot" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">t.me/Fitchell_school_bot</a></p>
+    <p class="clause"><strong>2.3.</strong> Услуги являются образовательными по содержанию, но не относятся к образовательной деятельности, подлежащей лицензированию по Федеральному закону № 273-ФЗ. Документы государственного образца не выдаются.</p>
+  </div>
+
+  <!-- 3. АКЦЕПТ -->
+  <div class="doc-section">
+    <div class="doc-section-title">3. Порядок акцепта оферты</div>
+    <p class="clause"><strong>3.1.</strong> Акцептом настоящей оферты признаётся полная оплата Заказчиком стоимости Услуг в соответствии с разделом 4 Договора.</p>
+    <p class="clause"><strong>3.2.</strong> До момента оплаты Заказчик обязан ознакомиться с текстом настоящей оферты. Совершение оплаты подтверждает, что Заказчик полностью ознакомлен с условиями Договора, понимает их и согласен с ними.</p>
+    <p class="clause"><strong>3.3.</strong> Акцепт оферты означает согласие Заказчика со всеми условиями Договора без каких-либо оговорок и исключений (ст. 438 ГК РФ).</p>
+  </div>
+
+  <!-- 4. ЦЕНА -->
+  <div class="doc-section">
+    <div class="doc-section-title">4. Цена и порядок оплаты</div>
+    <p class="clause"><strong>4.1.</strong> Стоимость каждой Услуги указывается в Программе / Описании, актуальном на дату оплаты: <a href="https://t.me/Fitchell_school_bot" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">t.me/Fitchell_school_bot</a></p>
+    <p class="clause"><strong>4.2.</strong> Оплата производится в российских рублях в форме 100% предоплаты до начала оказания Услуги.</p>
+    <p class="clause"><strong>4.3.</strong> Способы оплаты:</p>
+    <ul class="clause-list">
+      <li>Банковский перевод на карту</li>
+      <li>Через платёжную систему: <a href="https://prodamus.ru/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">prodamus.ru</a></li>
+      <li>Наличный расчёт</li>
+    </ul>
+    <p class="clause"><strong>4.4.</strong> Датой исполнения обязательства по оплате считается дата поступления денежных средств на счёт Исполнителя.</p>
+    <p class="clause"><strong>4.5.</strong> Исполнитель применяет специальный налоговый режим «Налог на профессиональный доход» и НДС не облагается. По итогам оплаты Исполнитель формирует и направляет Заказчику чек через приложение «Мой налог».</p>
+  </div>
+
+  <!-- 5. ПРАВА И ОБЯЗАННОСТИ -->
+  <div class="doc-section">
+    <div class="doc-section-title">5. Права и обязанности сторон</div>
+    <p class="clause"><strong>5.1. Исполнитель обязуется:</strong></p>
+    <ul class="clause-list">
+      <li>оказать Услуги в соответствии с согласованными Программой / Описанием, датой и местом проведения;</li>
+      <li>своевременно уведомить Заказчика об изменении даты, времени или места — не позднее чем за 24 часа;</li>
+      <li>сформировать чек самозанятого и направить его Заказчику не позднее следующего рабочего дня после получения оплаты;</li>
+      <li>обеспечить конфиденциальность персональных данных Заказчика в соответствии с законодательством РФ.</li>
+    </ul>
+    <p class="clause"><strong>5.2. Исполнитель вправе:</strong></p>
+    <ul class="clause-list">
+      <li>привлекать третьих лиц для оказания отдельных Услуг, оставаясь ответственным за результат;</li>
+      <li>изменять программу тренинга / консультации в разумных пределах, не снижая общего качества Услуги;</li>
+      <li>отказать в оказании Услуг Заказчику, нарушающему общественный порядок или оскорбляющему Исполнителя — в этом случае денежные средства возврату не подлежат;</li>
+      <li>в одностороннем порядке изменять условия настоящей оферты с публикацией новой редакции; изменения не распространяются на уже оплаченные Услуги.</li>
+    </ul>
+    <p class="clause"><strong>5.3. Заказчик обязуется:</strong></p>
+    <ul class="clause-list">
+      <li>оплатить Услуги в размере и в сроки, предусмотренные разделом 4 Договора;</li>
+      <li>своевременно сообщать Исполнителю актуальные контактные данные;</li>
+      <li>соблюдать регламент тренинга / консультации;</li>
+      <li>не записывать, не тиражировать и не распространять материалы Исполнителя без его письменного согласия.</li>
+    </ul>
+    <p class="clause"><strong>5.4. Заказчик вправе:</strong></p>
+    <ul class="clause-list">
+      <li>получать Услуги надлежащего качества в согласованные сроки;</li>
+      <li>обращаться к Исполнителю с вопросами по теме Услуги в разумных пределах;</li>
+      <li>расторгнуть Договор и получить возврат в порядке, предусмотренном разделом 6.</li>
+    </ul>
+  </div>
+
+  <!-- 6. ВОЗВРАТ -->
+  <div class="doc-section">
+    <div class="doc-section-title">6. Порядок возврата денежных средств</div>
+    <p class="clause"><strong>6.1.</strong> Заказчик вправе отказаться от Услуги и получить полный возврат при направлении письменного заявления Исполнителю в течение 3 (трёх) календарных дней с даты оплаты, но не позднее чем за 24 часа до начала тренинга / консультации.</p>
+    <p class="clause"><strong>6.2.</strong> По истечении срока, указанного в п. 6.1, или после начала оказания Услуги возврат денежных средств не производится.</p>
+    <p class="clause"><strong>6.3.</strong> Если тренинг / консультация не состоялись по вине Исполнителя, Заказчику предоставляется на выбор: перенос на ближайшую доступную дату или полный возврат денежных средств.</p>
+    <p class="clause"><strong>6.4.</strong> Возврат осуществляется тем же способом, которым была произведена оплата, в течение 10 (десяти) рабочих дней с момента получения письменного заявления Заказчика.</p>
+    <p class="clause"><strong>6.5.</strong> Заявление на возврат направляется на электронную почту Исполнителя (указана в разделе 1) с указанием ФИО, даты и суммы оплаты, реквизитов для возврата.</p>
+  </div>
+
+  <!-- 7. ОТВЕТСТВЕННОСТЬ -->
+  <div class="doc-section">
+    <div class="doc-section-title">7. Ответственность сторон</div>
+    <p class="clause"><strong>7.1.</strong> Исполнитель несёт ответственность за ненадлежащее исполнение обязательств в соответствии с законодательством РФ.</p>
+    <p class="clause"><strong>7.2.</strong> Исполнитель не гарантирует достижение Заказчиком конкретных коммерческих результатов, поскольку результат обучения зависит от индивидуальных способностей, усилий и условий деятельности Заказчика.</p>
+    <p class="clause"><strong>7.3.</strong> Совокупная ответственность Исполнителя по настоящему Договору ограничена стоимостью оплаченной Услуги.</p>
+    <p class="clause"><strong>7.4.</strong> Заказчик несёт ответственность за нарушение авторских прав Исполнителя на учебные материалы в соответствии с законодательством РФ об интеллектуальной собственности.</p>
+  </div>
+
+  <!-- 8. ФОРС-МАЖОР -->
+  <div class="doc-section">
+    <div class="doc-section-title">8. Форс-мажор</div>
+    <p class="clause"><strong>8.1.</strong> Стороны освобождаются от ответственности за неисполнение обязательств, если это вызвано обстоятельствами непреодолимой силы (стихийные бедствия, действия государственных органов, эпидемии, военные действия и иные обстоятельства, не зависящие от воли сторон).</p>
+    <p class="clause"><strong>8.2.</strong> Сторона, для которой возникли обстоятельства форс-мажора, обязана незамедлительно уведомить другую сторону.</p>
+    <p class="clause"><strong>8.3.</strong> При продолжении форс-мажора более 30 (тридцати) календарных дней каждая из сторон вправе расторгнуть Договор. Уже оплаченные, но не оказанные Услуги возвращаются Заказчику.</p>
+  </div>
+
+  <!-- 9. ПЕРСОНАЛЬНЫЕ ДАННЫЕ -->
+  <div class="doc-section">
+    <div class="doc-section-title">9. Персональные данные</div>
+    <p class="clause"><strong>9.1.</strong> Акцептуя настоящую оферту, Заказчик даёт согласие на обработку своих персональных данных (ФИО, контактный телефон, электронная почта) в целях исполнения Договора, направления чеков и информационных сообщений об Услугах Исполнителя.</p>
+    <p class="clause"><strong>9.2.</strong> Обработка персональных данных осуществляется в соответствии с Федеральным законом № 152-ФЗ «О персональных данных». Данные не передаются третьим лицам без согласия Заказчика, за исключением случаев, предусмотренных законодательством РФ.</p>
+    <p class="clause"><strong>9.3.</strong> Заказчик вправе в любое время отозвать согласие на обработку персональных данных, направив соответствующее заявление на электронную почту Исполнителя.</p>
+  </div>
+
+  <!-- 10. ИНТЕЛЛЕКТУАЛЬНАЯ СОБСТВЕННОСТЬ -->
+  <div class="doc-section">
+    <div class="doc-section-title">10. Интеллектуальная собственность</div>
+    <p class="clause"><strong>10.1.</strong> Все материалы, методики, презентации, раздаточные материалы и иной контент, используемый в ходе оказания Услуг, являются объектами авторского права и принадлежат Исполнителю.</p>
+    <p class="clause"><strong>10.2.</strong> Заказчику предоставляется право использовать полученные материалы исключительно в личных целях. Распространение, воспроизведение или продажа материалов третьим лицам без письменного согласия Исполнителя запрещены.</p>
+  </div>
+
+  <!-- 11. СПОРЫ -->
+  <div class="doc-section">
+    <div class="doc-section-title">11. Разрешение споров</div>
+    <p class="clause"><strong>11.1.</strong> Все споры и разногласия разрешаются путём переговоров.</p>
+    <p class="clause"><strong>11.2.</strong> При недостижении согласия в течение 30 (тридцати) календарных дней с момента направления письменной претензии споры передаются на рассмотрение в суд по месту жительства Исполнителя в соответствии с законодательством Российской Федерации.</p>
+    <p class="clause"><strong>11.3.</strong> К отношениям с Заказчиками — физическими лицами, не являющимися индивидуальными предпринимателями, применяются положения Закона РФ № 2300-1 «О защите прав потребителей».</p>
+  </div>
+
+  <!-- 12. ЗАКЛЮЧИТЕЛЬНЫЕ -->
+  <div class="doc-section">
+    <div class="doc-section-title">12. Заключительные положения</div>
+    <p class="clause"><strong>12.1.</strong> Настоящий Договор вступает в силу с момента акцепта оферты Заказчиком (оплаты Услуги) и действует до полного исполнения сторонами своих обязательств.</p>
+    <p class="clause"><strong>12.2.</strong> Исполнитель вправе в одностороннем порядке изменить условия настоящей оферты, разместив новую редакцию по месту публикации. Изменения вступают в силу с момента публикации и не распространяются на ранее оплаченные договоры.</p>
+    <p class="clause"><strong>12.3.</strong> Недействительность одного или нескольких положений настоящего Договора не влечёт недействительности остальных положений.</p>
+    <p class="clause"><strong>12.4.</strong> Настоящий Договор составлен и регулируется законодательством Российской Федерации.</p>
+  </div>
+
+  <!-- 13. РЕКВИЗИТЫ -->
+  <div class="doc-section">
+    <div class="doc-section-title">13. Реквизиты исполнителя</div>
+    <table class="requisites-table">
+      <tr><td>ФИО полностью</td><td>Ахметгареев Роберт Рамзилевич</td></tr>
+      <tr><td>ИНН</td><td>027502395090</td></tr>
+      <tr><td>Статус</td><td>Самозанятый (плательщик НПД)</td></tr>
+      <tr><td>Адрес</td><td>г. Уфа, Республика Башкортостан</td></tr>
+      <tr><td>Телефон</td><td>+7 917 79 55 239</td></tr>
+      <tr><td>Электронная почта</td><td>Fitchellr@gmail.com</td></tr>
+      <tr><td>Банк</td><td>АО «АЛЬФА-БАНК»</td></tr>
+      <tr><td>Расчётный счёт</td><td>40817810808100065011</td></tr>
+      <tr><td>БИК</td><td>044525593</td></tr>
+      <tr><td>Кор. счёт</td><td>30101810200000000593</td></tr>
+      <tr><td>Дата публикации</td><td>14.05.2026</td></tr>
+    </table>
+  </div>
+
+  <div class="accept-note">
+    Оплата услуг означает полное и безоговорочное принятие условий настоящей публичной оферты.
+  </div>
+</main>
+
+<footer>
+  © 2025 Роберт Фитчелл &nbsp;·&nbsp; <a href="/school_dis/">Школа продаж</a>
+</footer>
+
+</body>
+</html>
