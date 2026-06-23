@@ -723,6 +723,10 @@
         <div class="contact-form-success" id="cfSuccess">
           Заявка принята. Мы свяжемся с вами в ближайшее время и уточним детали.
         </div>
+        <label style="display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.4;margin-bottom:14px;cursor:pointer;color:rgba(255,255,255,0.6);">
+          <input type="checkbox" id="consent" name="consent" required style="margin-top:3px;flex-shrink:0;accent-color:#8965e0;">
+          <span>Я даю согласие на обработку персональных данных в соответствии с <a href="/privacy.html" target="_blank" rel="noopener" style="color:#8965e0;">Политикой конфиденциальности</a></span>
+        </label>
         <button type="submit" class="contact-form-submit">
           Оставить заявку
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -773,10 +777,14 @@
     btn.disabled = true;
     btn.textContent = 'Отправляем...';
     try {
-      const res = await fetch('https://formspree.io/f/xgoqojqn', {
+      const fd = new FormData(this);
+      const payload = Object.fromEntries(fd.entries());
+      payload.consent = true;
+      payload.page = location.href;
+      const res = await fetch('https://CHANGE-ME.functions.yandexcloud.net/', {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(this)
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
       });
       if (res.ok) {
         this.querySelectorAll('input:not([type=hidden])').forEach(el => el.style.display = 'none');

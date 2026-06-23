@@ -557,9 +557,7 @@
           <div class="reg-wrap">
             <div class="reg-title">Записаться на <span class="grad">открытый урок</span></div>
             <div class="reg-sub">3 июня · Екатеринбург · Места ограничены</div>
-            <form id="regForm" action="https://formspree.io/f/xgoqojqn" method="POST">
-              <input type="hidden" name="_subject" value="Запись на открытый урок — Екатеринбург 3 июня">
-              <input type="hidden" name="_next" value="https://robertfitchell.online/ekat/?success=1">
+            <form id="regForm">
               <div class="form-row">
                 <div class="form-group">
                   <label for="firstName">Имя</label>
@@ -574,11 +572,14 @@
                 <label for="phone">Телефон</label>
                 <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
               </div>
+              <label style="display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.4;margin-bottom:14px;cursor:pointer;color:rgba(255,255,255,0.6);">
+                <input type="checkbox" id="consent" name="consent" required style="margin-top:3px;flex-shrink:0;accent-color:#8965e0;">
+                <span>Я даю согласие на обработку персональных данных в соответствии с <a href="/privacy.html" target="_blank" rel="noopener" style="color:#8965e0;">Политикой конфиденциальности</a></span>
+              </label>
               <button type="submit" class="form-submit">
                 Занять место на уроке
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </button>
-              <div class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Никакого спама.</div>
             </form>
             <div class="form-success" id="formSuccess">
               <div class="form-success-icon">
@@ -645,10 +646,33 @@
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
 <script>
-  if (window.location.search.includes('success=1')) {
-    document.getElementById('regForm').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-  }
+  document.getElementById('regForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = 'Отправляем...';
+    try {
+      const fd = new FormData(this);
+      const payload = Object.fromEntries(fd.entries());
+      payload.consent = true;
+      payload.page = location.href;
+      const res = await fetch('https://CHANGE-ME.functions.yandexcloud.net/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        document.getElementById('regForm').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Занять место на уроке';
+      alert('Ошибка отправки. Напишите нам в Telegram: @RobertFitchell');
+    }
+  });
 </script>
 <script>
   const PALETTES = [
