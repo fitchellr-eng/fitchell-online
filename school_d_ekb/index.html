@@ -781,7 +781,7 @@
       const payload = Object.fromEntries(fd.entries());
       payload.consent = true;
       payload.page = location.href;
-      const res = await fetch('https://CHANGE-ME.functions.yandexcloud.net/', {
+      const res = await fetch('https://functions.yandexcloud.net/d4e0bieu6ein4udol75t', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(payload)
