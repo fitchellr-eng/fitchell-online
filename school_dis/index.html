@@ -423,7 +423,7 @@
   <a href="#hero" class="nav-logo">Школа продаж</a>
   <div class="nav-right">
     <div class="nav-socials">
-      <a href="https://t.me/RobertFitchell" class="nav-social" target="_blank" rel="noopener" title="Telegram">
+      <a href="https://t.me/Fitchell" class="nav-social" target="_blank" rel="noopener" title="Telegram">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
       </a>
     </div>
@@ -959,7 +959,7 @@
       © 2026 Ахметгареев Р.Р. · Роберт Фитчелл · ИНН 027502395090 · <a href="https://robertfitchell.ru" target="_blank" rel="noopener">robertfitchell.ru</a> · <a href="/oferta.html">Публичная оферта</a> · <a href="/privacy.html">Политика конфиденциальности</a> · <a href="/soglasie.html">Согласие на обработку ПДн</a>
     </div>
     <div class="footer-socials">
-      <a href="https://t.me/RobertFitchell" class="footer-social" target="_blank" rel="noopener">
+      <a href="https://t.me/Fitchell" class="footer-social" target="_blank" rel="noopener">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
         Telegram
       </a>
@@ -1024,8 +1024,13 @@
     try {
       const fd = new FormData(this);
       const payload = Object.fromEntries(fd.entries());
-      payload.consent = true;
+      payload.consent = !!(this.consent && this.consent.checked);
       payload.page = location.href;
+      // подтверждение согласия: формулировка со страницы и редакция документов
+      var consentLabel = this.consent && this.consent.closest('label');
+      payload.consentText = consentLabel
+          ? consentLabel.textContent.replace(/\s+/g, ' ').trim() : '';
+      payload.docsVersion = '2026-08-31';
       const res = await fetch('https://functions.yandexcloud.net/d4e0bieu6ein4udol75t', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -1039,12 +1044,12 @@
       } else {
         btn.disabled = false;
         btn.textContent = 'Отправить вопрос';
-        alert('Ошибка отправки. Напишите нам в Telegram: @RobertFitchell');
+        alert('Ошибка отправки. Напишите нам в Telegram: @Fitchell');
       }
     } catch {
       btn.disabled = false;
       btn.textContent = 'Отправить вопрос';
-      alert('Ошибка отправки. Напишите нам в Telegram: @RobertFitchell');
+      alert('Ошибка отправки. Напишите нам в Telegram: @Fitchell');
     }
   });
 
